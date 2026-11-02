@@ -1,0 +1,984 @@
+/* ═══════════════════════════════════════════════════════════
+   STACY NORTH — styles
+   White canvas, black handwriting, artwork as the only colour.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Fonts ────────────────────────────────────────────────────
+   NaomisHand and Innocent contain Latin letters only, so each
+   family is paired with a hand-drawn Cyrillic companion
+   (Neucha / Caveat, SIL Open Font License, self-hosted).
+   `size-adjust` evens out how big each font draws its letters
+   so English and Russian look the same size.               */
+
+@font-face {
+  font-family: 'Naomi';
+  src: url('/fonts/NaomisHand-Regular.ttf') format('truetype');
+  font-display: swap;
+  size-adjust: 270%;
+  unicode-range: U+0000-00FF, U+2018-201F, U+2026;
+}
+@font-face {
+  font-family: 'Naomi';
+  src: url('/fonts/neucha-cyrillic-400-normal.woff2') format('woff2');
+  font-display: swap;
+  size-adjust: 92%;
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* digits, @, - and other symbols missing from NaomisHand */
+@font-face {
+  font-family: 'Naomi Symbols';
+  src: url('/fonts/neucha-latin-400-normal.woff2') format('woff2');
+  font-display: swap;
+  size-adjust: 92%;
+}
+
+/* full Cyrillic-companion families, used as the main fonts while Russian is selected
+   (keeps punctuation and spacing consistent inside Russian sentences) */
+@font-face {
+  font-family: 'Hand RU';
+  src: url('/fonts/neucha-cyrillic-400-normal.woff2') format('woff2');
+  font-display: swap;
+  size-adjust: 92%;
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Hand RU';
+  src: url('/fonts/neucha-latin-400-normal.woff2') format('woff2');
+  font-display: swap;
+  size-adjust: 92%;
+  unicode-range: U+0000-00FF, U+2000-206F;
+}
+@font-face {
+  font-family: 'Heading RU';
+  src: url('/fonts/caveat-cyrillic-600-normal.woff2') format('woff2');
+  font-display: swap;
+  size-adjust: 136%;
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Heading RU';
+  src: url('/fonts/caveat-latin-600-normal.woff2') format('woff2');
+  font-display: swap;
+  size-adjust: 136%;
+  unicode-range: U+0000-00FF, U+2000-206F;
+}
+
+@font-face {
+  font-family: 'Innocent';
+  src: url('/fonts/Innocent.ttf') format('truetype');
+  font-display: swap;
+  size-adjust: 74%;
+  unicode-range: U+0000-00FF, U+2018-201F, U+2026;
+}
+@font-face {
+  font-family: 'Innocent';
+  src: url('/fonts/caveat-cyrillic-600-normal.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 400;
+  size-adjust: 136%;
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Innocent Symbols';
+  src: url('/fonts/caveat-latin-600-normal.woff2') format('woff2');
+  font-display: swap;
+  size-adjust: 136%;
+}
+
+/* ── Tokens ─────────────────────────────────────────────── */
+:root {
+  --paper: #ffffff;
+  --ink: #111111;
+  --ink-soft: #4a4a4a;
+  --hand: 'Naomi', 'Naomi Symbols', 'Comic Sans MS', 'Segoe Print', cursive;
+  --heading: 'Innocent', 'Innocent Symbols', 'Naomi', cursive;
+
+  --page-max: 1320px;
+  --gutter: clamp(16px, 5vw, 72px);
+  --gap: clamp(18px, 3.2vw, 48px);
+  --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
+  --ease-pop: cubic-bezier(0.3, 1.5, 0.5, 1);
+  --line: 2.5px;
+  --nudge-unit: 1rem;
+}
+
+/* ── Base ───────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--hand);
+  font-size: clamp(1.05rem, 0.98rem + 0.3vw, 1.25rem);
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Russian: hand-drawn Cyrillic companions become the main fonts */
+html:lang(ru) {
+  --hand: 'Hand RU', 'Naomi', 'Comic Sans MS', cursive;
+  --heading: 'Heading RU', 'Hand RU', cursive;
+}
+html:lang(ru) body {
+  letter-spacing: 0.02em;
+}
+/* the eng/rus switcher always keeps the original handwriting */
+.lang-switch,
+.lang-switch button {
+  font-family: 'Naomi', 'Naomi Symbols', cursive !important;
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+ul[role='list'] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+:focus-visible {
+  outline: 2px dashed var(--ink);
+  outline-offset: 6px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--paper);
+  padding: 0.4rem 0.8rem;
+  border: 2px solid var(--ink);
+  transition: top 0.2s var(--ease);
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* hand-drawn underline used by nav, switcher and links */
+.underline {
+  text-decoration: none;
+  position: relative;
+}
+
+/* ═══════════════ HEADER ═══════════════ */
+.site-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(36px, 6vw, 84px) var(--gutter) clamp(28px, 3.5vw, 56px);
+}
+
+.logo {
+  margin: 0;
+  width: min(620px, 88vw);
+  line-height: 0;
+}
+.logo a {
+  display: block;
+  border-radius: 4px;
+}
+.logo img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.8s var(--ease);
+}
+.logo a:hover img {
+  transform: rotate(-0.6deg) translateY(-2px);
+}
+
+.tagline {
+  margin: clamp(6px, 1vw, 14px) 0 0;
+  font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.45rem);
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+/* language switcher — "eng/rus", underlined like the logo reference */
+.lang-switch {
+  display: flex;
+  align-items: baseline;
+  gap: 0.1em;
+  margin-top: clamp(10px, 1.4vw, 18px);
+  font-size: clamp(1rem, 0.92rem + 0.3vw, 1.2rem);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+.lang-switch button {
+  position: relative;
+  padding: 0.15em 0.1em 0.25em;
+  opacity: 0.55;
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  font-family: var(--hand);
+}
+.lang-switch button::after {
+  content: '';
+  position: absolute;
+  left: 0.05em;
+  right: 0.05em;
+  bottom: 0.08em;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.35s var(--ease);
+}
+.lang-switch button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.lang-switch button[aria-pressed='true'] {
+  opacity: 1;
+  font-weight: 700;
+}
+.lang-switch button:hover::after {
+  transform: scaleX(1.12);
+}
+.lang-slash {
+  opacity: 0.7;
+}
+
+/* social icons */
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(22px, 3.5vw, 44px);
+  margin-top: clamp(14px, 2vw, 26px) !important;
+}
+.social-icon {
+  display: block;
+  width: clamp(54px, 6.5vw, 76px);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.social-icon img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.45s var(--ease);
+  will-change: transform;
+}
+.js-instagram.social-icon img {
+  width: 94%;
+  margin: 0 auto;
+}
+.social-icon:hover img,
+.social-icon:focus-visible img {
+  transform: scale(1.09) rotate(-5deg);
+}
+.social li:last-child .social-icon:hover img,
+.social li:last-child .social-icon:focus-visible img {
+  transform: scale(1.09) rotate(5deg);
+}
+.social-icon.is-popping img {
+  animation: pop 0.42s var(--ease-pop);
+}
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.14) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* navigation — underlined handwritten words, no bar, no buttons */
+.main-nav {
+  margin-top: clamp(18px, 2.6vw, 34px);
+  width: 100%;
+}
+.main-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem clamp(1.6rem, 4.6vw, 4.4rem);
+}
+.main-nav a {
+  position: relative;
+  display: inline-block;
+  padding: 0 0.35em 0.32em;
+  font-size: clamp(1.15rem, 0.9rem + 1vw, 1.75rem);
+  line-height: 1.4;
+  text-decoration: none;
+  transition: transform 0.35s var(--ease);
+}
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--line);
+  border-radius: 3px;
+  background: currentColor;
+  transform-origin: 50% 50%;
+  transition: transform 0.45s var(--ease);
+}
+.main-nav a:hover {
+  transform: translateY(-2px);
+}
+.main-nav a:hover::after {
+  transform: scaleX(1.08) rotate(-1deg);
+}
+
+/* ═══════════════ SECTIONS ═══════════════ */
+.section {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: clamp(40px, 7vw, 110px) var(--gutter);
+  scroll-margin-top: 10px;
+}
+.section--gallery {
+  padding-top: 0;
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: clamp(36px, 6vw, 80px);
+}
+.section-title {
+  font-family: var(--heading);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 1.5rem + 3vw, 4rem);
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: 0;
+}
+.section-sub {
+  margin: 0.5rem 0 0;
+  color: var(--ink-soft);
+}
+
+.gallery-hint {
+  text-align: right;
+  margin: 0 0 clamp(16px, 2vw, 28px);
+  font-size: 0.95em;
+  color: var(--ink-soft);
+}
+
+/* ═══════════════ THE CANVAS (gallery) ═══════════════
+   12 columns on desktop. Each piece sets its own
+   --start / --span / --nudge from the data files.        */
+.canvas {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: clamp(36px, 5vw, 80px);
+  align-items: start;
+}
+
+.art {
+  margin: 0;
+  grid-column: var(--start, auto) / span var(--span, 6);
+  margin-top: calc(var(--nudge, 0) * var(--nudge-unit));
+}
+
+.art-button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  cursor: zoom-in;
+  -webkit-tap-highlight-color: transparent;
+}
+.art-frame {
+  display: block;
+  position: relative;
+  aspect-ratio: var(--ratio);
+  overflow: visible;
+}
+.art-frame img,
+.art-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.9s var(--ease), opacity 0.6s var(--ease);
+}
+.art-frame img {
+  opacity: 0;
+}
+.art-frame img.is-loaded {
+  opacity: 1;
+}
+.art-button:hover .art-frame img,
+.art-button:hover .art-frame video,
+.art-button:focus-visible .art-frame img,
+.art-button:focus-visible .art-frame video {
+  transform: translateY(-5px) scale(1.018);
+}
+
+.art-caption {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 0.98em;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+.art-button:hover .art-caption,
+.art-button:focus-visible .art-caption {
+  opacity: 1;
+  transform: none;
+}
+@media (hover: none) {
+  .art-caption {
+    opacity: 0.85;
+    transform: none;
+  }
+}
+
+/* play mark on animation previews */
+.play-mark {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+  transition: transform 0.45s var(--ease);
+}
+.play-mark circle {
+  fill: #fff;
+}
+.play-mark path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.art-button:hover .play-mark {
+  transform: scale(1.1) rotate(-6deg);
+}
+
+/* empty hand-drawn frame for animations not yet uploaded */
+.placeholder-frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: var(--ratio);
+  color: var(--ink-soft);
+  text-align: center;
+  padding: 1rem;
+}
+.sketch-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.sketch-frame path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-dasharray: 7 9;
+  vector-effect: non-scaling-stroke;
+}
+.placeholder-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  line-height: 1.3;
+}
+.placeholder-inner svg {
+  width: 40px;
+  height: 40px;
+}
+.placeholder-inner svg path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* ═══════════════ ABOUT ═══════════════ */
+.about {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  align-items: center;
+  padding-top: clamp(60px, 9vw, 140px);
+}
+.about-photo {
+  grid-column: 2 / span 4;
+}
+.about-photo img {
+  width: 100%;
+  height: auto;
+}
+.photo-placeholder {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  display: grid;
+  place-items: center;
+  color: var(--ink-soft);
+  transform: rotate(-1.5deg);
+}
+.photo-placeholder span {
+  position: relative;
+}
+.about-text {
+  grid-column: 7 / span 6;
+}
+.about-text .section-title {
+  font-size: clamp(2.2rem, 1.5rem + 2.4vw, 3.6rem);
+}
+.about-text .section-title {
+  margin-bottom: 1.4rem;
+}
+.about-text p {
+  margin: 0 0 1.1em;
+  max-width: 34em;
+}
+.doodle path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.doodle--squiggle {
+  width: 150px;
+  margin-top: 1.6rem;
+}
+
+/* ═══════════════ CONTACT ═══════════════ */
+.contact {
+  text-align: center;
+  padding-top: clamp(80px, 11vw, 170px);
+  padding-bottom: clamp(60px, 8vw, 120px);
+}
+.doodle--star {
+  width: 46px;
+  margin: 0 auto 1.4rem;
+  transform: rotate(-12deg);
+}
+.contact-title {
+  font-family: var(--heading);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 1.4rem + 4.4vw, 5.2rem);
+  line-height: 1.1;
+  margin: 0;
+}
+.contact-sub {
+  margin: 1rem auto 0;
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.6rem);
+  max-width: 30em;
+}
+.contact-cta {
+  display: inline-block;
+  position: relative;
+  margin-top: clamp(30px, 4vw, 50px);
+  padding: 0 0.4em 0.3em;
+  font-family: var(--heading);
+  font-size: clamp(1.7rem, 1.2rem + 2vw, 2.7rem);
+  line-height: 1.3;
+  text-decoration: none;
+  transition: transform 0.4s var(--ease);
+}
+.contact-cta::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  border-radius: 3px;
+  background: currentColor;
+  transition: transform 0.45s var(--ease);
+}
+.contact-cta:hover {
+  transform: translateY(-3px) rotate(-1deg);
+}
+.contact-cta:hover::after {
+  transform: scaleX(1.1);
+}
+.contact-email {
+  margin: 1rem 0 0;
+}
+.contact-email a {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.3em;
+  word-break: break-word;
+  transition: opacity 0.3s;
+}
+.contact-email a:hover {
+  opacity: 0.6;
+}
+.contact-insta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: clamp(30px, 4vw, 46px);
+}
+.social-icon--small {
+  width: 52px;
+}
+.contact-insta-link {
+  text-decoration: none;
+  color: var(--ink-soft);
+  transition: color 0.3s;
+}
+.contact-insta-link:hover {
+  color: var(--ink);
+}
+
+/* ═══════════════ FOOTER ═══════════════ */
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 28px var(--gutter) 40px;
+  font-size: 0.9em;
+  color: var(--ink-soft);
+}
+.site-footer p {
+  margin: 0;
+}
+.to-top {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+/* ═══════════════ LIGHTBOX ═══════════════ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(255, 255, 255, 0.985);
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity 0.35s var(--ease);
+  overscroll-behavior: contain;
+}
+.lightbox::backdrop {
+  background: transparent;
+}
+.lightbox[open] {
+  display: block;
+}
+.lightbox.is-open {
+  opacity: 1;
+}
+.lightbox-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: clamp(56px, 7vh, 80px) clamp(16px, 8vw, 120px) clamp(20px, 4vh, 40px);
+}
+.lb-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100%;
+  transform: scale(0.97);
+  transition: transform 0.45s var(--ease), opacity 0.3s var(--ease);
+}
+.lightbox.is-open .lb-figure {
+  transform: none;
+}
+.lb-figure.is-changing {
+  opacity: 0;
+}
+.lb-media {
+  display: flex;
+  justify-content: center;
+}
+.lb-media img,
+.lb-media video {
+  max-width: min(100%, 1600px);
+  max-height: calc(100vh - 220px);
+  max-height: calc(100dvh - 220px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.lb-media iframe {
+  border: 0;
+  width: min(84vw, 1280px);
+  aspect-ratio: var(--ratio, 16 / 9);
+  max-height: calc(100dvh - 220px);
+}
+.lb-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.1rem;
+  margin-top: 1rem;
+  max-width: 40em;
+  line-height: 1.45;
+}
+.lb-title {
+  font-family: var(--heading);
+  font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem);
+  line-height: 1.25;
+}
+.lb-desc {
+  color: var(--ink-soft);
+  font-size: 0.95em;
+}
+.lb-count {
+  margin-top: 0.3rem;
+  font-size: 0.85em;
+  color: var(--ink-soft);
+}
+.lb-btn {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  transition: transform 0.35s var(--ease), opacity 0.3s;
+  -webkit-tap-highlight-color: transparent;
+}
+.lb-btn svg {
+  width: 100%;
+  overflow: visible;
+}
+.lb-btn path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.lb-close {
+  top: clamp(10px, 2vh, 24px);
+  right: clamp(10px, 2vw, 28px);
+  width: 46px;
+  height: 46px;
+}
+.lb-close:hover {
+  transform: rotate(90deg);
+}
+.lb-prev,
+.lb-next {
+  top: 50%;
+  margin-top: -27px;
+  width: 64px;
+}
+.lb-prev {
+  left: clamp(4px, 2vw, 36px);
+}
+.lb-next {
+  right: clamp(4px, 2vw, 36px);
+}
+.lb-prev:hover {
+  transform: translateX(-5px);
+}
+.lb-next:hover {
+  transform: translateX(5px);
+}
+.lb-btn[hidden] {
+  display: none;
+}
+html.lb-lock,
+html.lb-lock body {
+  overflow: hidden;
+}
+
+/* ═══════════════ MOTION ═══════════════ */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  transition-delay: var(--delay, 0s);
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* soft cross-fade when switching language */
+.i18n-fade,
+.site-header .tagline,
+.main-nav {
+  transition: opacity 0.25s var(--ease);
+}
+.is-switching .i18n-fade,
+.is-switching .site-header .tagline,
+.is-switching .main-nav {
+  opacity: 0;
+}
+
+/* ═══════════════ RESPONSIVE ═══════════════ */
+
+/* tablet: 6 columns, pieces arranged by shape */
+@media (max-width: 960px) {
+  :root {
+    --nudge-unit: 0.5rem;
+  }
+  .canvas {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-auto-flow: row dense;
+  }
+  .art {
+    grid-column: auto / span 3;
+  }
+  .art[data-shape='wide'] {
+    grid-column: 1 / -1;
+    --nudge: 0 !important;
+  }
+  .art[data-shape='wide'][data-alt='1'] {
+    grid-column: 2 / -1;
+  }
+  .art[data-shape='wide'][data-alt='0'] {
+    grid-column: 1 / span 5;
+  }
+  .about-photo {
+    grid-column: 1 / span 5;
+  }
+  .about-text {
+    grid-column: 7 / -1;
+  }
+}
+
+/* mobile: one playful column */
+@media (max-width: 600px) {
+  :root {
+    --gap: 16px;
+  }
+  .site-header {
+    padding-top: 30px;
+    padding-bottom: 36px;
+  }
+  .main-nav ul {
+    gap: 0.4rem 1.4rem;
+  }
+  .main-nav a {
+    font-size: 1.15rem;
+  }
+  .gallery-hint {
+    text-align: center;
+  }
+  .canvas {
+    display: flex;
+    flex-direction: column;
+    row-gap: 44px;
+  }
+  .art,
+  .art[data-shape='wide'][data-alt] {
+    width: 100%;
+    margin-top: 0;
+  }
+  .art[data-shape='tall'],
+  .art[data-shape='square'] {
+    width: 84%;
+  }
+  .art[data-alt='1'][data-shape='tall'],
+  .art[data-alt='1'][data-shape='square'] {
+    align-self: flex-end;
+  }
+  .about {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .about-photo {
+    width: 72%;
+    align-self: center;
+  }
+  .about-text {
+    width: 100%;
+  }
+  .lb-prev,
+  .lb-next {
+    top: auto;
+    bottom: 12px;
+    margin-top: 0;
+  }
+  .lightbox-inner {
+    padding-bottom: 76px;
+  }
+  .lb-media img,
+  .lb-media video {
+    max-height: calc(100dvh - 260px);
+  }
+  .site-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0s !important;
+  }
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

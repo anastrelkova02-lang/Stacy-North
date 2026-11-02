@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stacy North — Children’s Book Illustrator</title>
+    <meta
+      name="description"
+      content="Whimsical, imaginative illustrations and animations by Stacy North, children's book illustrator."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light only" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Stacy North — Children’s Book Illustrator" />
+    <meta
+      property="og:description"
+      content="Whimsical, imaginative illustrations and animations by Stacy North, children's book illustrator."
+    />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="preload" href="/fonts/NaomisHand-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/Innocent.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/images/brand/logo.png" as="image" />
+
+    <!-- Apply the saved language before the page paints (no flash of the wrong language) -->
+    <script>
+      try {
+        var q = new URLSearchParams(location.search).get('lang');
+        var l = q === 'ru' || q === 'en' ? q : localStorage.getItem('stacy-north-lang');
+        if (l === 'ru' || l === 'en') document.documentElement.lang = l;
+      } catch (e) {}
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#illustrations">Skip to the artwork</a>
+
+    <!-- ═══════════════ HEADER ═══════════════ -->
+    <header class="site-header" id="top">
+      <h1 class="logo">
+        <a href="#top" data-i18n-attr="aria-label:header.home" aria-label="Stacy North — back to the top">
+          <img
+            src="/images/brand/logo.png"
+            alt="Stacy North"
+            width="1800"
+            height="413"
+            fetchpriority="high"
+          />
+        </a>
+      </h1>
+
+      <p class="tagline" data-i18n="header.tagline">children's book illustrator</p>
+
+      <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label" aria-label="Choose language">
+        <button type="button" data-lang="en" lang="en" data-i18n-attr="aria-label:lang.en" aria-label="English">eng</button>
+        <span class="lang-slash" aria-hidden="true">/</span>
+        <button type="button" data-lang="ru" lang="en" data-i18n-attr="aria-label:lang.ru" aria-label="Russian">rus</button>
+      </div>
+
+      <ul class="social" role="list">
+        <li>
+          <a class="social-icon js-email" href="mailto:stacynorth.illustration@gmail.com" data-i18n-attr="aria-label:social.email" aria-label="Write to Stacy by email">
+            <img src="/images/brand/icon-email.png" alt="" width="293" height="306" />
+          </a>
+        </li>
+        <li>
+          <a
+            class="social-icon js-instagram"
+            href="https://www.instagram.com/stacynorth_illustration/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n-attr="aria-label:social.instagram"
+            aria-label="Stacy North on Instagram (opens in a new tab)"
+          >
+            <img src="/images/brand/icon-instagram.png" alt="" width="285" height="269" />
+          </a>
+        </li>
+      </ul>
+
+      <nav class="main-nav" data-i18n-attr="aria-label:nav.label" aria-label="Main navigation">
+        <ul role="list">
+          <li><a href="#illustrations" data-i18n="nav.illustrations">illustrations</a></li>
+          <li><a href="#animations" data-i18n="nav.animations">animations</a></li>
+          <li><a href="#about" data-i18n="nav.about">about</a></li>
+          <li><a href="#contacts" data-i18n="nav.contacts">contacts</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="i18n-fade">
+      <!-- ═══════════════ ILLUSTRATIONS ═══════════════ -->
+      <section class="section section--gallery" id="illustrations" aria-labelledby="illustrations-title">
+        <h2 class="visually-hidden" id="illustrations-title" data-i18n="illustrations.heading">Illustrations</h2>
+        <p class="gallery-hint reveal" data-i18n="illustrations.hint">click a picture to see it bigger</p>
+        <!-- Filled from src/data/illustrations.js -->
+        <div class="canvas" id="illustrations-grid"></div>
+      </section>
+
+      <!-- ═══════════════ ANIMATIONS ═══════════════ -->
+      <section class="section" id="animations" aria-labelledby="animations-title">
+        <div class="section-head reveal">
+          <h2 class="section-title" id="animations-title" data-i18n="animations.heading">Animations</h2>
+          <p class="section-sub" data-i18n="animations.subtitle">little pictures that come to life</p>
+        </div>
+        <!-- Filled from src/data/animations.js -->
+        <div class="canvas" id="animations-grid"></div>
+      </section>
+
+      <!-- ═══════════════ ABOUT ═══════════════ -->
+      <section class="section about" id="about" aria-labelledby="about-title">
+        <div class="about-photo reveal">
+          <!-- ✎ PHOTO PLACEHOLDER: replace this <div> with
+               <img src="/images/stacy-portrait.webp" alt="Stacy North" width="..." height="..." /> -->
+          <div class="photo-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 400 500" preserveAspectRatio="none" class="sketch-frame">
+              <path d="M6 9 C 120 3, 270 12, 394 6 C 398 160, 392 330, 395 494 C 270 498, 130 489, 5 495 C 9 330, 2 170, 6 9 Z" />
+            </svg>
+            <span data-i18n="about.photo">photo coming soon</span>
+          </div>
+        </div>
+
+        <div class="about-text reveal">
+          <h2 class="section-title" id="about-title" data-i18n="about.heading">A little about me</h2>
+          <!-- ✎ BIOGRAPHY: edit the texts in src/i18n/translations.js (about.p1 … about.p4) -->
+          <p data-i18n="about.p1">Hi! I'm Stacy North, a children's book illustrator.</p>
+          <p data-i18n="about.p2">
+            I draw whimsical, imaginative worlds — cosy little houses, curious animals and all the tiny details that make a story feel like home.
+          </p>
+          <p data-i18n="about.p3">
+            My favourite part of the work is bringing stories and characters to life, so that readers of every age want to step inside the page and stay a little longer.
+          </p>
+          <p data-i18n="about.p4">If you have a story waiting for its pictures, I would love to hear about it.</p>
+          <svg class="doodle doodle--squiggle" viewBox="0 0 220 40" aria-hidden="true">
+            <path d="M4 26 C 24 4, 40 4, 46 20 S 64 38, 78 22 S 100 2, 112 20 S 132 38, 146 22 S 168 4, 180 20 S 200 34, 216 16" />
+          </svg>
+        </div>
+      </section>
+
+      <!-- ═══════════════ CONTACT ═══════════════ -->
+      <section class="section contact" id="contacts" aria-labelledby="contact-title">
+        <svg class="doodle doodle--star reveal" viewBox="0 0 60 60" aria-hidden="true">
+          <path d="M30 6 L35 24 L54 25 L39 36 L45 54 L30 43 L15 54 L21 36 L6 25 L25 24 Z" />
+        </svg>
+        <h2 class="contact-title reveal" id="contact-title" data-i18n="contact.heading">Have a project in mind?</h2>
+        <p class="contact-sub reveal" data-i18n="contact.sub">Let's create something magical together!</p>
+
+        <a class="contact-cta reveal js-email" href="mailto:stacynorth.illustration@gmail.com" data-i18n="contact.cta">Get in touch</a>
+        <p class="contact-email reveal">
+          <a class="js-email js-email-text" href="mailto:stacynorth.illustration@gmail.com">stacynorth.illustration@gmail.com</a>
+        </p>
+
+        <div class="contact-insta reveal">
+          <a
+            class="social-icon social-icon--small js-instagram"
+            href="https://www.instagram.com/stacynorth_illustration/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n-attr="aria-label:social.instagram"
+            aria-label="Stacy North on Instagram (opens in a new tab)"
+          >
+            <img src="/images/brand/icon-instagram.png" alt="" width="285" height="269" loading="lazy" />
+          </a>
+          <a class="contact-insta-link js-instagram" href="https://www.instagram.com/stacynorth_illustration/" target="_blank" rel="noopener noreferrer">
+            <span data-i18n="contact.or">or find me on Instagram</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        © <span class="js-year">2026</span> <span data-i18n="site.name">Stacy North</span>.
+        <span data-i18n="footer.rights">All illustrations are protected by copyright.</span>
+      </p>
+      <a href="#top" class="to-top" data-i18n="footer.top">back to the top</a>
+    </footer>
+
+    <!-- ═══════════════ LIGHTBOX ═══════════════ -->
+    <dialog class="lightbox" id="lightbox" data-i18n-attr="aria-label:lightbox.label" aria-label="Artwork viewer">
+      <div class="lightbox-inner">
+        <button type="button" class="lb-btn lb-close" data-i18n-attr="aria-label:lightbox.close" aria-label="close">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M9 10 C 17 17, 24 24, 31 31 M31 9 C 24 17, 16 24, 9 31" /></svg>
+        </button>
+        <figure class="lb-figure">
+          <div class="lb-media" id="lb-media"></div>
+          <figcaption class="lb-caption">
+            <span class="lb-title" id="lb-title"></span>
+            <span class="lb-desc" id="lb-desc"></span>
+            <span class="lb-count" id="lb-count"></span>
+          </figcaption>
+        </figure>
+        <button type="button" class="lb-btn lb-prev" data-i18n-attr="aria-label:lightbox.prev" aria-label="previous">
+          <svg viewBox="0 0 60 30" aria-hidden="true"><path d="M56 15 C 40 14, 22 16, 5 15 M15 5 C 11 9, 8 12, 5 15 C 9 18, 12 21, 16 26" /></svg>
+        </button>
+        <button type="button" class="lb-btn lb-next" data-i18n-attr="aria-label:lightbox.next" aria-label="next">
+          <svg viewBox="0 0 60 30" aria-hidden="true"><path d="M4 15 C 20 16, 38 14, 55 15 M45 5 C 49 9, 52 12, 55 15 C 51 18, 48 21, 44 26" /></svg>
+        </button>
+      </div>
+    </dialog>
+
+    <noscript>
+      <style>.reveal{opacity:1!important;transform:none!important}</style>
+    </noscript>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
