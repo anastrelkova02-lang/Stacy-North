@@ -4,7 +4,7 @@ import { translations } from './i18n/translations.js';
 import { illustrations } from './data/illustrations.js';
 
 const STORAGE_KEY = 'stacy-north-lang';
-const LANGS = ['en', 'ru'];
+const LANGS = ['en', 'uk'];
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 /* ───────────────────────── language ───────────────────────── */
@@ -176,10 +176,7 @@ function buildGallery(container, items) {
     img.addEventListener('error', markLoaded, { once: true });
     frame.appendChild(img);
 
-    const caption = document.createElement('span');
-    caption.className = 'art-caption';
-
-    btn.append(frame, caption);
+    btn.append(frame);
     fig.appendChild(btn);
     container.appendChild(fig);
     galleryItems.push({ item, el: fig });
@@ -189,7 +186,6 @@ function buildGallery(container, items) {
 function refreshGalleryText() {
   galleryItems.forEach(({ item, el }) => {
     const title = pick(item.title);
-    el.querySelector('.art-caption').textContent = title;
     const media = el.querySelector('img');
     if (media) media.alt = pick(item.description) || title;
     el.querySelector('.art-button').setAttribute(
@@ -205,9 +201,6 @@ const lightbox = (() => {
   const dialog = document.getElementById('lightbox');
   const figure = dialog.querySelector('.lb-figure');
   const media = document.getElementById('lb-media');
-  const titleEl = document.getElementById('lb-title');
-  const descEl = document.getElementById('lb-desc');
-  const countEl = document.getElementById('lb-count');
   const prevBtn = dialog.querySelector('.lb-prev');
   const nextBtn = dialog.querySelector('.lb-next');
   let list = [];
@@ -233,12 +226,11 @@ const lightbox = (() => {
     nextBtn.hidden = !multiple;
   }
 
+  // alt text follows the selected language (nothing is shown as a caption)
   function updateCaption() {
+    const img = media.querySelector('img');
     const item = list[index];
-    if (!item) return;
-    titleEl.textContent = pick(item.title);
-    descEl.textContent = pick(item.description);
-    countEl.textContent = list.length > 1 ? `${index + 1} ${t('lightbox.of')} ${list.length}` : '';
+    if (img && item) img.alt = pick(item.description) || pick(item.title);
   }
 
   function go(step) {
