@@ -6,7 +6,7 @@
     <title>Stacy North — Children’s Book Illustrator</title>
     <meta
       name="description"
-      content="Whimsical, imaginative illustrations and animations by Stacy North, children's book illustrator."
+      content="Whimsical, imaginative illustrations by Stacy North, children's book illustrator."
     />
     <meta name="theme-color" content="#ffffff" />
     <meta name="color-scheme" content="light only" />
@@ -15,7 +15,7 @@
     <meta property="og:title" content="Stacy North — Children’s Book Illustrator" />
     <meta
       property="og:description"
-      content="Whimsical, imaginative illustrations and animations by Stacy North, children's book illustrator."
+      content="Whimsical, imaginative illustrations by Stacy North, children's book illustrator."
     />
     <meta property="og:image" content="/og-image.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -44,15 +44,14 @@
     <!-- ═══════════════ HEADER ═══════════════ -->
     <header class="site-header" id="top">
       <h1 class="logo">
-        <a href="#top" data-i18n-attr="aria-label:header.home" aria-label="Stacy North — back to the top">
-          <img
-            src="/images/brand/logo.png"
-            alt="Stacy North"
-            width="1800"
-            height="413"
-            fetchpriority="high"
-          />
-        </a>
+        <img
+          src="/images/brand/logo.png"
+          alt="Stacy North"
+          width="1800"
+          height="413"
+          fetchpriority="high"
+          draggable="false"
+        />
       </h1>
 
       <p class="tagline" data-i18n="header.tagline">children's book illustrator</p>
@@ -86,7 +85,6 @@
       <nav class="main-nav" data-i18n-attr="aria-label:nav.label" aria-label="Main navigation">
         <ul role="list">
           <li><a href="#illustrations" data-i18n="nav.illustrations">illustrations</a></li>
-          <li><a href="#animations" data-i18n="nav.animations">animations</a></li>
           <li><a href="#about" data-i18n="nav.about">about</a></li>
           <li><a href="#contacts" data-i18n="nav.contacts">contacts</a></li>
         </ul>
@@ -100,16 +98,6 @@
         <p class="gallery-hint reveal" data-i18n="illustrations.hint">click a picture to see it bigger</p>
         <!-- Filled from src/data/illustrations.js -->
         <div class="canvas" id="illustrations-grid"></div>
-      </section>
-
-      <!-- ═══════════════ ANIMATIONS ═══════════════ -->
-      <section class="section" id="animations" aria-labelledby="animations-title">
-        <div class="section-head reveal">
-          <h2 class="section-title" id="animations-title" data-i18n="animations.heading">Animations</h2>
-          <p class="section-sub" data-i18n="animations.subtitle">little pictures that come to life</p>
-        </div>
-        <!-- Filled from src/data/animations.js -->
-        <div class="canvas" id="animations-grid"></div>
       </section>
 
       <!-- ═══════════════ ABOUT ═══════════════ -->
