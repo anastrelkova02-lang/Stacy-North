@@ -15,7 +15,8 @@
  *    src      image shown in the gallery
  *    full     large image for the lightbox (optional, falls back to `src`)
  *    width / height   original pixel size (used to keep the exact proportions — no cropping)
- *    title / description   { en, ru }  — description is also used as the image alt text
+ *    title / description   { en, uk }  — not shown on the page; used as the image alt text
+ *                          (for visitors using screen readers) and for search engines
  *    layout   (optional, desktop only) position on a 12-column canvas:
  *               start  → column where the picture begins (1–12)
  *               span   → how many columns wide it is
@@ -29,10 +30,10 @@ export const illustrations = [
     full: 'images/illustrations/tomato-soup-tower-full.webp',
     width: 5100,
     height: 2550,
-    title: { en: 'Tomato Soup Tower', ru: 'Домик из консервных банок' },
+    title: { en: 'Tomato Soup Tower', uk: 'Будиночок із консервних бляшанок' },
     description: {
       en: 'A tiny worm\'s tea house built from tins, glowing among giant leaves and fireflies at night.',
-      ru: 'Чайный домик маленького червячка, построенный из консервных банок, светится в ночи среди огромных листьев и светлячков.',
+      uk: 'Чайний будиночок маленького хробачка, збудований із консервних бляшанок, світиться вночі серед величезного листя та світлячків.',
     },
     layout: { start: 1, span: 8, nudge: 0 },
   },
@@ -42,10 +43,10 @@ export const illustrations = [
     full: 'images/illustrations/hello-september-full.webp',
     width: 1080,
     height: 1350,
-    title: { en: 'Hello, September!', ru: 'Привет, сентябрь!' },
+    title: { en: 'Hello, September!', uk: 'Привіт, вересню!' },
     description: {
       en: 'A cosy acorn village wakes up to the first days of autumn.',
-      ru: 'Уютная деревушка в желудях встречает первые дни осени.',
+      uk: 'Затишне жолудеве селище зустрічає перші дні осені.',
     },
     layout: { start: 9, span: 4, nudge: 0 },
   },
@@ -55,10 +56,10 @@ export const illustrations = [
     full: 'images/illustrations/gingerbread-house-full.webp',
     width: 2000,
     height: 2000,
-    title: { en: 'Gingerbread Day', ru: 'Пряничный день' },
+    title: { en: 'Gingerbread Day', uk: 'Пряниковий день' },
     description: {
       en: 'Decorating a gingerbread house while the snow falls outside.',
-      ru: 'Пока за окном идёт снег, девочка украшает пряничный домик.',
+      uk: 'Поки за вікном падає сніг, дівчинка прикрашає пряниковий будиночок.',
     },
     layout: { start: 1, span: 6, nudge: 0 },
   },
@@ -68,10 +69,10 @@ export const illustrations = [
     full: 'images/illustrations/coral-reef-full.webp',
     width: 1920,
     height: 1080,
-    title: { en: 'Under the Sea', ru: 'Под водой' },
+    title: { en: 'Under the Sea', uk: 'Під водою' },
     description: {
       en: 'Two little divers meet a curious crab and a friendly octopus on a bright coral reef.',
-      ru: 'Двое маленьких ныряльщиков знакомятся с любопытным крабом и дружелюбным осьминогом на ярком коралловом рифе.',
+      uk: 'Двоє маленьких пірнальників знайомляться з допитливим крабом і привітним восьминогом на яскравому кораловому рифі.',
     },
     layout: { start: 7, span: 6, nudge: 4 },
   },
@@ -81,10 +82,10 @@ export const illustrations = [
     full: 'images/illustrations/rainy-campfire-full.webp',
     width: 5100,
     height: 2550,
-    title: { en: 'Rainy Night Campfire', ru: 'Костёр в дождливую ночь' },
+    title: { en: 'Rainy Night Campfire', uk: 'Багаття дощової ночі' },
     description: {
       en: 'A little mouse in a yellow raincoat toasts marshmallows by her glowing log house.',
-      ru: 'Мышка в жёлтом дождевике жарит маршмеллоу у своего светящегося домика в бревне.',
+      uk: 'Мишка в жовтому дощовику підсмажує маршмелоу біля свого сяйливого будиночка в колоді.',
     },
     layout: { start: 1, span: 12, nudge: 0 },
   },
@@ -94,10 +95,10 @@ export const illustrations = [
     full: 'images/illustrations/cookie-tin-workshop-full.webp',
     width: 1080,
     height: 1350,
-    title: { en: 'The Cookie Tin Workshop', ru: 'Мастерская в коробке из-под печенья' },
+    title: { en: 'The Cookie Tin Workshop', uk: 'Майстерня в коробці з-під печива' },
     description: {
       en: 'A ladybug knits a long scarf inside a cookie tin full of sewing treasures.',
-      ru: 'Божья коровка вяжет длинный шарф в жестяной коробке, полной швейных сокровищ.',
+      uk: 'Сонечко в’яже довгий шарф у бляшаній коробці, повній швейних скарбів.',
     },
     layout: { start: 1, span: 4, nudge: 0 },
   },
@@ -107,10 +108,10 @@ export const illustrations = [
     full: 'images/illustrations/pumpkin-evening-full.webp',
     width: 2000,
     height: 2000,
-    title: { en: 'Pumpkin Evening', ru: 'Тыквенный вечер' },
+    title: { en: 'Pumpkin Evening', uk: 'Гарбузовий вечір' },
     description: {
       en: 'A bear carves a pumpkin by the fireplace, with two little ghosts for company.',
-      ru: 'Медведь вырезает тыкву у камина, а компанию ему составляют два маленьких привидения.',
+      uk: 'Ведмідь вирізає гарбуз біля каміна, а компанію йому складають двоє маленьких привидів.',
     },
     layout: { start: 5, span: 4, nudge: 3 },
   },
@@ -120,10 +121,10 @@ export const illustrations = [
     full: 'images/illustrations/apple-house-full.webp',
     width: 1080,
     height: 1350,
-    title: { en: 'Tea in the Apple', ru: 'Чаепитие в яблоке' },
+    title: { en: 'Tea in the Apple', uk: 'Чаювання в яблуці' },
     description: {
       en: 'Two worms share tea and cake in their warm apple home while it rains outside.',
-      ru: 'Два червячка пьют чай с пирожным в своём тёплом яблочном домике, пока снаружи идёт дождь.',
+      uk: 'Два хробачки п’ють чай із тістечком у своєму теплому яблучному будиночку, поки надворі йде дощ.',
     },
     layout: { start: 9, span: 4, nudge: 0 },
   },
@@ -133,10 +134,10 @@ export const illustrations = [
     full: 'images/illustrations/baxter-the-bear-full.webp',
     width: 5100,
     height: 2550,
-    title: { en: 'Baxter the Bear Cub', ru: 'Медвежонок Бакстер' },
+    title: { en: 'Baxter the Bear Cub', uk: 'Ведмежа Бакстер' },
     description: {
       en: 'A spread from a story about Baxter, a little bear who couldn\'t fall asleep for the winter.',
-      ru: 'Разворот из истории о медвежонке Бакстере, который никак не мог впасть в спячку.',
+      uk: 'Розворот з історії про ведмежа Бакстера, яке ніяк не могло заснути на зиму.',
     },
     layout: { start: 1, span: 12, nudge: 0 },
   },
@@ -146,10 +147,10 @@ export const illustrations = [
     full: 'images/illustrations/stump-house-full.webp',
     width: 1080,
     height: 1350,
-    title: { en: 'Autumn Cleaning', ru: 'Осенняя уборка' },
+    title: { en: 'Autumn Cleaning', uk: 'Осіннє прибирання' },
     description: {
       en: 'A mouse sweeps up fallen leaves in front of her tree-stump house.',
-      ru: 'Мышка подметает опавшие листья у своего домика в старом пне.',
+      uk: 'Мишка підмітає опале листя біля свого будиночка в старому пні.',
     },
     layout: { start: 1, span: 5, nudge: 0 },
   },
@@ -159,10 +160,10 @@ export const illustrations = [
     full: 'images/illustrations/frog-pond-full.webp',
     width: 1920,
     height: 1080,
-    title: { en: 'Pond Song', ru: 'Песенка у пруда' },
+    title: { en: 'Pond Song', uk: 'Пісенька біля ставка' },
     description: {
       en: 'Two frogs spend a lazy summer day on the pond, surrounded by dragonflies.',
-      ru: 'Две лягушки проводят ленивый летний день на пруду в окружении стрекоз.',
+      uk: 'Дві жабки проводять лінивий літній день на ставку серед бабок.',
     },
     layout: { start: 6, span: 7, nudge: 5 },
   },
@@ -172,10 +173,10 @@ export const illustrations = [
     full: 'images/illustrations/ghost-movie-night-full.webp',
     width: 1080,
     height: 1350,
-    title: { en: 'Ghost Movie Night', ru: 'Киновечер с привидениями' },
+    title: { en: 'Ghost Movie Night', uk: 'Кіновечір із привидами' },
     description: {
       en: 'Even ghosts get scared at a horror movie.',
-      ru: 'Даже привидения боятся фильмов ужасов.',
+      uk: 'Навіть привиди бояться фільмів жахів.',
     },
     layout: { start: 4, span: 6, nudge: 0 },
   },
