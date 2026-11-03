@@ -1,9 +1,9 @@
 /**
  * ─────────────────────────────────────────────────────────────
- *  ALL WEBSITE TEXT — English (en) and Russian (ru).
+ *  ALL WEBSITE TEXT — English (en) and Ukrainian (uk).
  * ─────────────────────────────────────────────────────────────
- *  Every visible piece of text lives here (artwork titles live in
- *  src/data/). Edit the words, keep the keys.
+ *  Every visible piece of text lives here (artwork alt texts live in
+ *  src/data/illustrations.js). Edit the words, keep the keys.
  *
  *  The artist's name stays "Stacy North" in both languages.
  *
@@ -12,30 +12,27 @@
  */
 export const translations = {
   en: {
-    'meta.title': 'Stacy North — Children\'s Book Illustrator',
+    'meta.title': "Stacy North — Children's Book Illustrator",
     'meta.description':
-      'Whimsical, imaginative illustrations by Stacy North, children\'s book illustrator.',
+      "Whimsical, imaginative illustrations by Stacy North, children's book illustrator.",
 
-    'header.tagline': 'children\'s book illustrator',
-    'header.home': 'Stacy North — back to the top',
     'lang.label': 'Choose language',
     'lang.en': 'English',
-    'lang.ru': 'Russian',
+    'lang.uk': 'Ukrainian',
 
     'nav.label': 'Main navigation',
     'nav.illustrations': 'illustrations',
     'nav.about': 'about',
     'nav.contacts': 'contacts',
 
-    'social.email': 'Write to Stacy by email',
+    'social.email': 'Write to Stacy North by email',
     'social.instagram': 'Stacy North on Instagram (opens in a new tab)',
 
     'illustrations.heading': 'Illustrations',
-    'illustrations.hint': 'click a picture to see it bigger',
     'illustrations.open': 'Open larger: ',
 
     'about.heading': 'A little about me',
-    'about.p1': 'Hi! I\'m Stacy North, a children\'s book illustrator.',
+    'about.p1': "Hi! I'm Stacy North, a children's book illustrator.",
     'about.p2':
       'I draw whimsical, imaginative worlds — cosy little houses, curious animals and all the tiny details that make a story feel like home.',
     'about.p3':
@@ -44,11 +41,10 @@ export const translations = {
     'about.photo': 'photo coming soon',
 
     'contact.heading': 'Have a project in mind?',
-    'contact.sub': 'Let\'s create something magical together!',
+    'contact.sub': "Let's create something magical together!",
     'contact.cta': 'Get in touch',
     'contact.or': 'or find me on Instagram',
 
-    'site.name': 'Stacy North',
     'footer.rights': 'All illustrations are protected by copyright.',
     'footer.top': 'back to the top',
 
@@ -56,54 +52,47 @@ export const translations = {
     'lightbox.close': 'close',
     'lightbox.prev': 'previous',
     'lightbox.next': 'next',
-    'lightbox.of': 'of',
   },
 
-  ru: {
-    'meta.title': 'Stacy North — иллюстратор детских книг',
-    'meta.description':
-      'Сказочные иллюстрации Stacy North — иллюстратора детских книг.',
+  uk: {
+    'meta.title': 'Stacy North — ілюстраторка дитячих книжок',
+    'meta.description': 'Казкові ілюстрації Stacy North — ілюстраторки дитячих книжок.',
 
-    'header.tagline': 'иллюстратор детских книг',
-    'header.home': 'Stacy North — наверх',
-    'lang.label': 'Выбор языка',
-    'lang.en': 'Английский',
-    'lang.ru': 'Русский',
+    'lang.label': 'Вибір мови',
+    'lang.en': 'Англійська',
+    'lang.uk': 'Українська',
 
-    'nav.label': 'Основная навигация',
-    'nav.illustrations': 'иллюстрации',
-    'nav.about': 'обо мне',
-    'nav.contacts': 'контакты',
+    'nav.label': 'Основна навігація',
+    'nav.illustrations': 'ілюстрації',
+    'nav.about': 'про мене',
+    'nav.contacts': 'контакти',
 
-    'social.email': 'Написать Stacy North на почту',
-    'social.instagram': 'Stacy North в Instagram (откроется в новой вкладке)',
+    'social.email': 'Написати Stacy North на пошту',
+    'social.instagram': 'Stacy North в Instagram (відкриється в новій вкладці)',
 
-    'illustrations.heading': 'Иллюстрации',
-    'illustrations.hint': 'нажмите на картинку, чтобы рассмотреть её поближе',
-    'illustrations.open': 'Открыть крупнее: ',
+    'illustrations.heading': 'Ілюстрації',
+    'illustrations.open': 'Переглянути більшою: ',
 
-    'about.heading': 'Немного обо мне',
-    'about.p1': 'Привет! Я Stacy North, иллюстратор детских книг.',
+    'about.heading': 'Трохи про мене',
+    'about.p1': 'Привіт! Я Stacy North, ілюстраторка дитячих книжок.',
     'about.p2':
-      'Я рисую сказочные миры, полные фантазии: уютные домики, любопытных зверят и те крошечные детали, благодаря которым история становится по-настоящему родной.',
+      'Я малюю казкові світи, сповнені фантазії: затишні будиночки, допитливих звірят і ті крихітні деталі, завдяки яким історія стає по-справжньому рідною.',
     'about.p3':
-      'Больше всего в своей работе я люблю оживлять истории и персонажей — так, чтобы читателю любого возраста захотелось шагнуть внутрь страницы и задержаться там подольше.',
-    'about.p4': 'Если у вас есть история, которая ждёт своих картинок, я буду рада о ней услышать.',
-    'about.photo': 'здесь скоро будет фото',
+      'Найбільше у своїй роботі я люблю оживляти історії та персонажів — так, щоб читачеві будь-якого віку захотілося ступити всередину сторінки й затриматися там трохи довше.',
+    'about.p4': 'Якщо у вас є історія, яка чекає на свої малюнки, я буду рада про неї почути.',
+    'about.photo': 'тут незабаром буде фото',
 
-    'contact.heading': 'Есть идея для проекта?',
-    'contact.sub': 'Давайте создадим что-нибудь волшебное вместе!',
-    'contact.cta': 'Связаться',
-    'contact.or': 'или загляните ко мне в Instagram',
+    'contact.heading': 'Маєте ідею для проєкту?',
+    'contact.sub': 'Давайте створимо щось чарівне разом!',
+    'contact.cta': 'Зв’язатися',
+    'contact.or': 'або знайдіть мене в Instagram',
 
-    'site.name': 'Stacy North',
-    'footer.rights': 'Все иллюстрации защищены авторским правом.',
-    'footer.top': 'наверх',
+    'footer.rights': 'Усі ілюстрації захищені авторським правом.',
+    'footer.top': 'нагору',
 
-    'lightbox.label': 'Просмотр работы',
-    'lightbox.close': 'закрыть',
+    'lightbox.label': 'Перегляд роботи',
+    'lightbox.close': 'закрити',
     'lightbox.prev': 'назад',
-    'lightbox.next': 'вперёд',
-    'lightbox.of': 'из',
+    'lightbox.next': 'вперед',
   },
 };
