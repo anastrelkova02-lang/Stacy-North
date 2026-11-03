@@ -1,7 +1,7 @@
 # Stacy North — Portfolio
 
 The portfolio website of **Stacy North**, children's book illustrator.
-It's a single page in English and Russian, with a white canvas, handwritten type, and the artwork as the only colour.
+It's a single page in English and Ukrainian, with a white canvas, handwritten type, and the artwork as the only colour.
 
 Built with plain HTML, CSS and JavaScript, bundled by [Vite](https://vitejs.dev). It has one development dependency and no frameworks, and it deploys to Vercel for free.
 
@@ -31,7 +31,7 @@ npm run dev        # opens http://localhost:5173
 | What                                | File                                  |
 | ----------------------------------- | ------------------------------------- |
 | Email, Instagram link, default language | `src/config.js`                   |
-| All text, in English and Russian (menu, about, contact…) | `src/i18n/translations.js` |
+| All text, in English and Ukrainian (menu, about, contact…) | `src/i18n/translations.js` |
 | Illustrations: add, remove, reorder, retitle | `src/data/illustrations.js`  |
 | Portrait photo for the About section | `index.html` (look for `PHOTO PLACEHOLDER`) |
 | Colours, spacing, sizes             | `src/styles.css`                      |
@@ -54,11 +54,11 @@ Save it as `public/images/stacy-portrait.webp`. In `index.html`, replace the `<d
 - **NaomisHand**: navigation, body text and captions
 - **Innocent**: headings
 
-Neither font includes Cyrillic letters. While Russian is selected, the site uses two hand-drawn companion fonts with Cyrillic, **Neucha** for text and **Caveat** for headings. Both are free under the SIL Open Font License and are stored in `public/fonts/`. Nothing loads from Google.
+Neither font includes Cyrillic letters. While Ukrainian is selected, the site uses two hand-drawn companion fonts with Cyrillic, **Neucha** for text and **Caveat** for headings. Both are free under the SIL Open Font License and are stored in `public/fonts/`. Nothing loads from Google.
 
 ## Language
 
-English is the default. The artist's name is always written as "Stacy North", in both languages. The visitor's choice is saved in their browser. You can also send a link that opens straight in Russian: `https://stacy-north.vercel.app/?lang=ru`
+English is the default. The artist's name is always written as "Stacy North", in both languages. The visitor's choice is saved in their browser. You can also send a link that opens straight in Ukrainian: `https://stacymorth.vercel.app/?lang=uk`
 
 ---
 
