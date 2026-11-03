@@ -47,7 +47,7 @@ export const illustrations = [
       en: 'A cosy acorn village wakes up to the first days of autumn.',
       ru: 'Уютная деревушка в желудях встречает первые дни осени.',
     },
-    layout: { start: 10, span: 3, nudge: 7 },
+    layout: { start: 9, span: 4, nudge: 0 },
   },
   {
     id: 'gingerbread-house',
@@ -60,7 +60,7 @@ export const illustrations = [
       en: 'Decorating a gingerbread house while the snow falls outside.',
       ru: 'Пока за окном идёт снег, девочка украшает пряничный домик.',
     },
-    layout: { start: 2, span: 5, nudge: 2 },
+    layout: { start: 1, span: 6, nudge: 0 },
   },
   {
     id: 'coral-reef',
@@ -73,7 +73,7 @@ export const illustrations = [
       en: 'Two little divers meet a curious crab and a friendly octopus on a bright coral reef.',
       ru: 'Двое маленьких ныряльщиков знакомятся с любопытным крабом и дружелюбным осьминогом на ярком коралловом рифе.',
     },
-    layout: { start: 7, span: 6, nudge: 10 },
+    layout: { start: 7, span: 6, nudge: 4 },
   },
   {
     id: 'rainy-campfire',
@@ -86,7 +86,7 @@ export const illustrations = [
       en: 'A little mouse in a yellow raincoat toasts marshmallows by her glowing log house.',
       ru: 'Мышка в жёлтом дождевике жарит маршмеллоу у своего светящегося домика в бревне.',
     },
-    layout: { start: 3, span: 9, nudge: 2 },
+    layout: { start: 1, span: 12, nudge: 0 },
   },
   {
     id: 'cookie-tin-workshop',
@@ -99,7 +99,7 @@ export const illustrations = [
       en: 'A ladybug knits a long scarf inside a cookie tin full of sewing treasures.',
       ru: 'Божья коровка вяжет длинный шарф в жестяной коробке, полной швейных сокровищ.',
     },
-    layout: { start: 1, span: 4, nudge: 1 },
+    layout: { start: 1, span: 4, nudge: 0 },
   },
   {
     id: 'pumpkin-evening',
@@ -112,7 +112,7 @@ export const illustrations = [
       en: 'A bear carves a pumpkin by the fireplace, with two little ghosts for company.',
       ru: 'Медведь вырезает тыкву у камина, а компанию ему составляют два маленьких привидения.',
     },
-    layout: { start: 6, span: 4, nudge: 9 },
+    layout: { start: 5, span: 4, nudge: 3 },
   },
   {
     id: 'apple-house',
@@ -125,7 +125,7 @@ export const illustrations = [
       en: 'Two worms share tea and cake in their warm apple home while it rains outside.',
       ru: 'Два червячка пьют чай с пирожным в своём тёплом яблочном домике, пока снаружи идёт дождь.',
     },
-    layout: { start: 10, span: 3, nudge: 4 },
+    layout: { start: 9, span: 4, nudge: 0 },
   },
   {
     id: 'baxter-the-bear',
@@ -138,7 +138,7 @@ export const illustrations = [
       en: 'A spread from a story about Baxter, a little bear who couldn\'t fall asleep for the winter.',
       ru: 'Разворот из истории о медвежонке Бакстере, который никак не мог впасть в спячку.',
     },
-    layout: { start: 1, span: 9, nudge: 3 },
+    layout: { start: 1, span: 12, nudge: 0 },
   },
   {
     id: 'stump-house',
@@ -151,7 +151,7 @@ export const illustrations = [
       en: 'A mouse sweeps up fallen leaves in front of her tree-stump house.',
       ru: 'Мышка подметает опавшие листья у своего домика в старом пне.',
     },
-    layout: { start: 2, span: 4, nudge: 3 },
+    layout: { start: 1, span: 5, nudge: 0 },
   },
   {
     id: 'frog-pond',
@@ -164,7 +164,7 @@ export const illustrations = [
       en: 'Two frogs spend a lazy summer day on the pond, surrounded by dragonflies.',
       ru: 'Две лягушки проводят ленивый летний день на пруду в окружении стрекоз.',
     },
-    layout: { start: 7, span: 6, nudge: 11 },
+    layout: { start: 6, span: 7, nudge: 5 },
   },
   {
     id: 'ghost-movie-night',
@@ -177,6 +177,6 @@ export const illustrations = [
       en: 'Even ghosts get scared at a horror movie.',
       ru: 'Даже привидения боятся фильмов ужасов.',
     },
-    layout: { start: 5, span: 4, nudge: 3 },
+    layout: { start: 4, span: 6, nudge: 0 },
   },
 ];
