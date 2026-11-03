@@ -2,7 +2,6 @@ import './styles.css';
 import { SITE } from './config.js';
 import { translations } from './i18n/translations.js';
 import { illustrations } from './data/illustrations.js';
-import { animations } from './data/animations.js';
 
 const STORAGE_KEY = 'stacy-north-lang';
 const LANGS = ['en', 'ru'];
@@ -114,23 +113,21 @@ const shapeOf = ({ width, height }) => {
 const AUTO = {
   wide: [
     { start: 1, span: 8, nudge: 0 },
-    { start: 4, span: 9, nudge: 3 },
-    { start: 2, span: 8, nudge: 2 },
+    { start: 5, span: 8, nudge: 2 },
   ],
   square: [
-    { start: 2, span: 5, nudge: 2 },
-    { start: 8, span: 4, nudge: 7 },
+    { start: 1, span: 6, nudge: 0 },
+    { start: 7, span: 6, nudge: 3 },
   ],
   tall: [
-    { start: 9, span: 4, nudge: 6 },
-    { start: 1, span: 4, nudge: 1 },
-    { start: 6, span: 3, nudge: 9 },
+    { start: 8, span: 5, nudge: 3 },
+    { start: 1, span: 5, nudge: 0 },
   ],
 };
 
-const galleryItems = []; // { item, el, kind } — used to re-translate in place
+const galleryItems = []; // { item, el } — used to re-translate in place
 
-function buildGallery(container, items, kind) {
+function buildGallery(container, items) {
   if (!container) return;
   const counters = { wide: 0, square: 0, tall: 0, flow: 0 };
 
@@ -150,24 +147,8 @@ function buildGallery(container, items, kind) {
     fig.style.setProperty('--ratio', `${item.width} / ${item.height}`);
 
     const sizes = `(min-width: 961px) ${Math.round((layout.span / 12) * 100)}vw, (min-width: 601px) ${
-      shape === 'wide' ? 90 : 46
-    }vw, 92vw`;
-
-    if (item.type === 'placeholder') {
-      fig.innerHTML = `
-        <div class="placeholder-frame" style="--ratio:${item.width} / ${item.height}">
-          <svg class="sketch-frame" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M1 1.6 C 30 0.6, 70 2.2, 99 1 C 99.6 35, 98.6 70, 99.2 99 C 70 99.6, 30 98.4, 0.8 99.2 C 1.6 70, 0.4 30, 1 1.6 Z"/>
-          </svg>
-          <span class="placeholder-inner">
-            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M13 9 C 20 13, 26 17, 31 20 C 25 24, 19 28, 13 31 C 12.6 24, 12.4 16, 13 9 Z"/></svg>
-            <span class="js-soon"></span>
-          </span>
-        </div>`;
-      container.appendChild(fig);
-      galleryItems.push({ item, el: fig, kind: 'placeholder' });
-      return;
-    }
+      shape === 'wide' ? 100 : 50
+    }vw, 100vw`;
 
     const btn = document.createElement('button');
     btn.type = 'button';
@@ -177,46 +158,23 @@ function buildGallery(container, items, kind) {
     const frame = document.createElement('span');
     frame.className = 'art-frame';
 
-    if (item.type === 'video') {
-      const v = document.createElement('video');
-      v.src = item.src;
-      if (item.poster) v.poster = item.poster;
-      v.muted = true;
-      v.loop = true;
-      v.playsInline = true;
-      v.preload = 'metadata';
-      v.setAttribute('aria-hidden', 'true');
-      v.width = item.width;
-      v.height = item.height;
-      frame.appendChild(v);
-      videoObserver?.observe(v);
-    } else {
-      const img = new Image();
-      const source = item.type === 'embed' ? item.poster : item.src;
-      img.src = source;
-      const thumbW = Math.min(1100, item.width);
-      const fullW = Math.min(2400, item.width);
-      if (item.full && item.full !== source && fullW > thumbW) {
-        img.srcset = `${source} ${thumbW}w, ${item.full} ${fullW}w`;
-        img.sizes = sizes;
-      }
-      img.width = item.width;
-      img.height = item.height;
-      img.decoding = 'async';
-      img.loading = index < 2 && kind === 'illustration' ? 'eager' : 'lazy';
-      if (index < 2 && kind === 'illustration') img.fetchPriority = 'high';
-      const markLoaded = () => img.classList.add('is-loaded');
-      img.complete ? markLoaded() : img.addEventListener('load', markLoaded, { once: true });
-      img.addEventListener('error', markLoaded, { once: true });
-      frame.appendChild(img);
+    const img = new Image();
+    img.src = item.src;
+    const thumbW = Math.min(1100, item.width);
+    const fullW = Math.min(2400, item.width);
+    if (item.full && item.full !== item.src && fullW > thumbW) {
+      img.srcset = `${item.src} ${thumbW}w, ${item.full} ${fullW}w`;
+      img.sizes = sizes;
     }
-
-    if (kind === 'animation') {
-      frame.insertAdjacentHTML(
-        'beforeend',
-        `<svg class="play-mark" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20"/><path d="M22 2.5 C 33 2, 42 11, 41.5 22 C 41 33, 33 41.5, 22 41.5 C 11 42, 2.5 33, 2.5 22 C 2.8 11, 11 2.6, 22 2.5 Z"/><path d="M17 14 C 21 16.5, 25 19, 29 22 C 25 24.5, 21 27, 17 29.5 C 16.6 24, 16.6 19, 17 14 Z"/></svg>`
-      );
-    }
+    img.width = item.width;
+    img.height = item.height;
+    img.decoding = 'async';
+    img.loading = index < 2 ? 'eager' : 'lazy';
+    if (index < 2) img.fetchPriority = 'high';
+    const markLoaded = () => img.classList.add('is-loaded');
+    img.complete ? markLoaded() : img.addEventListener('load', markLoaded, { once: true });
+    img.addEventListener('error', markLoaded, { once: true });
+    frame.appendChild(img);
 
     const caption = document.createElement('span');
     caption.className = 'art-caption';
@@ -224,39 +182,22 @@ function buildGallery(container, items, kind) {
     btn.append(frame, caption);
     fig.appendChild(btn);
     container.appendChild(fig);
-    galleryItems.push({ item, el: fig, kind });
+    galleryItems.push({ item, el: fig });
   });
 }
 
 function refreshGalleryText() {
-  galleryItems.forEach(({ item, el, kind }) => {
-    if (kind === 'placeholder') {
-      el.querySelector('.js-soon').textContent = t('animations.soon');
-      return;
-    }
+  galleryItems.forEach(({ item, el }) => {
     const title = pick(item.title);
     el.querySelector('.art-caption').textContent = title;
     const media = el.querySelector('img');
     if (media) media.alt = pick(item.description) || title;
     el.querySelector('.art-button').setAttribute(
       'aria-label',
-      (kind === 'animation' ? t('animations.play') : t('illustrations.open')) + title
+      t('illustrations.open') + title
     );
   });
 }
-
-// play animation previews only while visible (saves battery & data)
-const videoObserver =
-  'IntersectionObserver' in window
-    ? new IntersectionObserver(
-        (entries) =>
-          entries.forEach(({ target, isIntersecting }) => {
-            if (isIntersecting && !reduceMotion.matches) target.play().catch(() => {});
-            else target.pause();
-          }),
-        { threshold: 0.25 }
-      )
-    : null;
 
 /* ───────────────────────── lightbox ───────────────────────── */
 
@@ -273,40 +214,19 @@ const lightbox = (() => {
   let index = 0;
   let trigger = null;
 
-  const playable = (items) => items.filter((i) => i.type !== 'placeholder');
-
   function render() {
     const item = list[index];
     media.innerHTML = '';
-    media.style.setProperty('--ratio', `${item.width} / ${item.height}`);
-    if (item.type === 'video') {
-      const v = document.createElement('video');
-      v.src = item.src;
-      if (item.poster) v.poster = item.poster;
-      v.controls = true;
-      v.playsInline = true;
-      v.autoplay = !reduceMotion.matches;
-      v.loop = true;
-      media.appendChild(v);
-    } else if (item.type === 'embed') {
-      const f = document.createElement('iframe');
-      f.src = item.embed;
-      f.allow = 'autoplay; fullscreen; picture-in-picture';
-      f.allowFullscreen = true;
-      f.title = pick(item.title);
-      media.appendChild(f);
-    } else {
-      const img = new Image();
-      img.src = item.full || item.src;
-      img.width = item.width;
-      img.height = item.height;
-      img.alt = pick(item.description) || pick(item.title);
-      media.appendChild(img);
-      // warm the neighbours so arrows feel instant
-      [list[index + 1], list[index - 1]].forEach((n) => {
-        if (n && !n.type) new Image().src = n.full || n.src;
-      });
-    }
+    const img = new Image();
+    img.src = item.full || item.src;
+    img.width = item.width;
+    img.height = item.height;
+    img.alt = pick(item.description) || pick(item.title);
+    media.appendChild(img);
+    // warm the neighbours so arrows feel instant
+    [list[index + 1], list[index - 1]].forEach((n) => {
+      if (n) new Image().src = n.full || n.src;
+    });
     updateCaption();
     const multiple = list.length > 1;
     prevBtn.hidden = !multiple;
@@ -338,9 +258,8 @@ const lightbox = (() => {
   }
 
   function open(items, startIndex, from) {
-    const all = playable(items);
-    list = all;
-    index = Math.max(0, all.indexOf(items[startIndex]));
+    list = items;
+    index = startIndex;
     trigger = from;
     render();
     document.documentElement.classList.add('lb-lock');
@@ -354,7 +273,7 @@ const lightbox = (() => {
     dialog.classList.remove('is-open');
     const finish = () => {
       dialog.close();
-      media.innerHTML = ''; // stops any video / embed
+      media.innerHTML = '';
       document.documentElement.classList.remove('lb-lock');
       trigger?.focus({ preventScroll: true });
       api.isOpen = false;
@@ -422,7 +341,6 @@ function setupReveal() {
 
 /* ───────────────────────── start ───────────────────────── */
 
-buildGallery(document.getElementById('illustrations-grid'), illustrations, 'illustration');
-buildGallery(document.getElementById('animations-grid'), animations, 'animation');
+buildGallery(document.getElementById('illustrations-grid'), illustrations);
 applyTranslations();
 setupReveal();
