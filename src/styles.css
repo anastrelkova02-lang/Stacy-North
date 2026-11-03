@@ -33,7 +33,7 @@
 }
 
 /* full Cyrillic-companion families, used as the main fonts while Russian is selected
-   (keeps punctuation and spacing consistent inside Russian sentences) */
+   (keeps punctuation and spacing consistent inside Ukrainian sentences) */
 @font-face {
   font-family: 'Hand RU';
   src: url('/fonts/neucha-cyrillic-400-normal.woff2') format('woff2');
@@ -127,20 +127,14 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Russian: hand-drawn Cyrillic companions become the main fonts */
-html:lang(ru) {
+/* Ukrainian: hand-drawn Cyrillic companions become the main fonts */
+html:lang(uk) {
   --hand: 'Hand RU', 'Naomi', 'Comic Sans MS', cursive;
   --heading: 'Heading RU', 'Hand RU', cursive;
 }
-html:lang(ru) body {
+html:lang(uk) body {
   letter-spacing: 0.02em;
 }
-/* the eng/rus switcher always keeps the original handwriting */
-.lang-switch,
-.lang-switch button {
-  font-family: 'Naomi', 'Naomi Symbols', cursive !important;
-}
-
 img,
 video,
 svg {
@@ -210,9 +204,12 @@ ul[role='list'] {
   padding: clamp(36px, 6vw, 84px) var(--gutter) clamp(28px, 3.5vw, 56px);
 }
 
+.logo-wrap {
+  position: relative;
+  width: min(760px, 92vw);
+}
 .logo {
   margin: 0;
-  width: min(620px, 88vw);
   line-height: 0;
 }
 .logo img {
@@ -223,67 +220,54 @@ ul[role='list'] {
   -webkit-user-drag: none;
 }
 
-.tagline {
-  margin: clamp(6px, 1vw, 14px) 0 0;
-  font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.45rem);
-  line-height: 1.3;
-  color: var(--ink);
-}
-
-/* language switcher — "eng/rus", underlined like the logo reference */
-.lang-switch {
-  display: flex;
-  align-items: baseline;
-  gap: 0.1em;
-  margin-top: clamp(10px, 1.4vw, 18px);
-  font-size: clamp(1rem, 0.92rem + 0.3vw, 1.2rem);
-  line-height: 1.2;
-  letter-spacing: 0;
-}
-.lang-switch button {
-  position: relative;
-  padding: 0.15em 0.1em 0.25em;
-  opacity: 0.55;
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
-  font-family: var(--hand);
-}
-.lang-switch button::after {
-  content: '';
+/* language switcher: invisible buttons over the "eng" and "ua" drawn in the logo.
+   The language that is not selected is softly faded with a white veil. */
+.lang-hit,
+.lang-veil {
   position: absolute;
-  left: 0.05em;
-  right: 0.05em;
-  bottom: 0.08em;
-  height: 2px;
-  border-radius: 2px;
-  background: currentColor;
-  transition: transform 0.35s var(--ease);
+  top: var(--y);
+  left: var(--x);
+  width: var(--w);
+  height: var(--h);
 }
-.lang-switch button:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+.lang-hit {
+  z-index: 2;
+  border-radius: 6px;
+  -webkit-tap-highlight-color: transparent;
 }
-.lang-switch button[aria-pressed='true'] {
-  opacity: 1;
-  font-weight: 700;
+.lang-hit--en { --x: 38%; --y: 80%; --w: 12.5%; --h: 32%; }
+.lang-hit--uk { --x: 50.5%; --y: 80%; --w: 12.5%; --h: 32%; }
+.lang-veil {
+  z-index: 1;
+  background: var(--paper);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease);
 }
-.lang-switch button:hover::after {
-  transform: scaleX(1.12);
+.lang-veil--en { --x: 45.1%; --y: 83.8%; --w: 5.2%; --h: 14.2%; }
+.lang-veil--uk { --x: 50.75%; --y: 83.8%; --w: 4.8%; --h: 14.2%; }
+html:lang(en) .lang-veil--uk,
+html:lang(uk) .lang-veil--en {
+  opacity: 0.62;
 }
-.lang-slash {
-  opacity: 0.7;
+html:lang(en) .lang-switch:has(.lang-hit--uk:hover) .lang-veil--uk,
+html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
+  opacity: 0.25;
+}
+.lang-hit:focus-visible {
+  outline-offset: 0;
 }
 
-/* social icons */
+/* mouse illustrations (footer only) */
 .social {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(22px, 3.5vw, 44px);
-  margin-top: clamp(14px, 2vw, 26px) !important;
+  gap: clamp(28px, 4vw, 48px);
 }
 .social-icon {
   display: block;
-  width: clamp(54px, 6.5vw, 76px);
+  width: clamp(62px, 7vw, 84px);
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
@@ -299,11 +283,7 @@ ul[role='list'] {
 }
 .social-icon:hover img,
 .social-icon:focus-visible img {
-  transform: scale(1.09) rotate(-5deg);
-}
-.social li:last-child .social-icon:hover img,
-.social li:last-child .social-icon:focus-visible img {
-  transform: scale(1.09) rotate(5deg);
+  transform: scale(1.1);
 }
 .social-icon.is-popping img {
   animation: pop 0.42s var(--ease-pop);
@@ -313,7 +293,7 @@ ul[role='list'] {
     transform: scale(1);
   }
   45% {
-    transform: scale(1.14) rotate(-3deg);
+    transform: scale(1.14);
   }
   100% {
     transform: scale(1);
@@ -322,7 +302,7 @@ ul[role='list'] {
 
 /* navigation — underlined handwritten words, no bar, no buttons */
 .main-nav {
-  margin-top: clamp(18px, 2.6vw, 34px);
+  margin-top: clamp(22px, 3vw, 40px);
   width: 100%;
 }
 .main-nav ul {
@@ -391,13 +371,6 @@ ul[role='list'] {
   color: var(--ink-soft);
 }
 
-.gallery-hint {
-  text-align: right;
-  margin: 0 0 clamp(16px, 2vw, 28px);
-  font-size: 0.95em;
-  color: var(--ink-soft);
-}
-
 /* ═══════════════ THE CANVAS (gallery) ═══════════════
    12 columns on desktop. Each piece sets its own
    --start / --span / --nudge from the data files.        */
@@ -440,27 +413,6 @@ ul[role='list'] {
 .art-button:hover .art-frame img,
 .art-button:focus-visible .art-frame img {
   transform: translateY(-5px) scale(1.018);
-}
-
-.art-caption {
-  display: block;
-  margin-top: 0.7rem;
-  font-size: 0.98em;
-  line-height: 1.4;
-  opacity: 0;
-  transform: translateY(-4px);
-  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
-}
-.art-button:hover .art-caption,
-.art-button:focus-visible .art-caption {
-  opacity: 1;
-  transform: none;
-}
-@media (hover: none) {
-  .art-caption {
-    opacity: 0.85;
-    transform: none;
-  }
 }
 
 .sketch-frame {
@@ -594,17 +546,12 @@ ul[role='list'] {
   opacity: 0.6;
 }
 .contact-insta {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.8rem;
-  margin-top: clamp(30px, 4vw, 46px);
-}
-.social-icon--small {
-  width: 52px;
+  margin: clamp(26px, 3.5vw, 40px) 0 0;
 }
 .contact-insta-link {
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.3em;
   color: var(--ink-soft);
   transition: color 0.3s;
 }
@@ -615,14 +562,22 @@ ul[role='list'] {
 /* ═══════════════ FOOTER ═══════════════ */
 .site-footer {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.5rem 2rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: 28px var(--gutter) 40px;
+  padding: clamp(20px, 3vw, 36px) var(--gutter) 36px;
   font-size: 0.9em;
   color: var(--ink-soft);
+}
+.footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.4rem 1.6rem;
+  text-align: center;
 }
 .site-footer p {
   margin: 0;
@@ -688,35 +643,11 @@ ul[role='list'] {
 }
 .lb-media img {
   max-width: min(100%, 1600px);
-  max-height: calc(100vh - 220px);
-  max-height: calc(100dvh - 220px);
+  max-height: calc(100vh - 140px);
+  max-height: calc(100dvh - 140px);
   width: auto;
   height: auto;
   object-fit: contain;
-}
-.lb-caption {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.1rem;
-  margin-top: 1rem;
-  max-width: 40em;
-  line-height: 1.45;
-}
-.lb-title {
-  font-family: var(--heading);
-  font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem);
-  line-height: 1.25;
-}
-.lb-desc {
-  color: var(--ink-soft);
-  font-size: 0.95em;
-}
-.lb-count {
-  margin-top: 0.3rem;
-  font-size: 0.85em;
-  color: var(--ink-soft);
 }
 .lb-btn {
   position: absolute;
@@ -787,12 +718,10 @@ html.lb-lock body {
 
 /* soft cross-fade when switching language */
 .i18n-fade,
-.site-header .tagline,
 .main-nav {
   transition: opacity 0.25s var(--ease);
 }
 .is-switching .i18n-fade,
-.is-switching .site-header .tagline,
 .is-switching .main-nav {
   opacity: 0;
 }
@@ -839,9 +768,6 @@ html.lb-lock body {
     font-size: 1.02rem;
     padding: 0 0.2em 0.3em;
   }
-  .gallery-hint {
-    text-align: center;
-  }
   .canvas {
     display: flex;
     flex-direction: column;
@@ -873,12 +799,7 @@ html.lb-lock body {
     padding-bottom: 76px;
   }
   .lb-media img {
-    max-height: calc(100dvh - 260px);
-  }
-  .site-footer {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    max-height: calc(100dvh - 180px);
   }
 }
 
