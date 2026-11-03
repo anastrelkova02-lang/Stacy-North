@@ -5,6 +5,8 @@
  *  Every visible piece of text lives here (artwork titles live in
  *  src/data/). Edit the words, keep the keys.
  *
+ *  The artist's name stays "Stacy North" in both languages.
+ *
  *  ✎ The "about" texts are a starting draft — replace them with
  *    Stacy's own biography whenever it is ready.
  */
@@ -12,7 +14,7 @@ export const translations = {
   en: {
     'meta.title': 'Stacy North — Children\'s Book Illustrator',
     'meta.description':
-      'Whimsical, imaginative illustrations and animations by Stacy North, children\'s book illustrator.',
+      'Whimsical, imaginative illustrations by Stacy North, children\'s book illustrator.',
 
     'header.tagline': 'children\'s book illustrator',
     'header.home': 'Stacy North — back to the top',
@@ -22,7 +24,6 @@ export const translations = {
 
     'nav.label': 'Main navigation',
     'nav.illustrations': 'illustrations',
-    'nav.animations': 'animations',
     'nav.about': 'about',
     'nav.contacts': 'contacts',
 
@@ -32,11 +33,6 @@ export const translations = {
     'illustrations.heading': 'Illustrations',
     'illustrations.hint': 'click a picture to see it bigger',
     'illustrations.open': 'Open larger: ',
-
-    'animations.heading': 'Animations',
-    'animations.subtitle': 'little pictures that come to life',
-    'animations.soon': 'animation coming soon',
-    'animations.play': 'Play animation: ',
 
     'about.heading': 'A little about me',
     'about.p1': 'Hi! I\'m Stacy North, a children\'s book illustrator.',
@@ -64,36 +60,30 @@ export const translations = {
   },
 
   ru: {
-    'meta.title': 'Стейси Норт — иллюстратор детских книг',
+    'meta.title': 'Stacy North — иллюстратор детских книг',
     'meta.description':
-      'Сказочные иллюстрации и анимации Стейси Норт — иллюстратора детских книг.',
+      'Сказочные иллюстрации Stacy North — иллюстратора детских книг.',
 
     'header.tagline': 'иллюстратор детских книг',
-    'header.home': 'Стейси Норт — наверх',
+    'header.home': 'Stacy North — наверх',
     'lang.label': 'Выбор языка',
     'lang.en': 'Английский',
     'lang.ru': 'Русский',
 
     'nav.label': 'Основная навигация',
     'nav.illustrations': 'иллюстрации',
-    'nav.animations': 'анимации',
     'nav.about': 'обо мне',
     'nav.contacts': 'контакты',
 
-    'social.email': 'Написать Стейси на почту',
-    'social.instagram': 'Стейси Норт в Instagram (откроется в новой вкладке)',
+    'social.email': 'Написать Stacy North на почту',
+    'social.instagram': 'Stacy North в Instagram (откроется в новой вкладке)',
 
     'illustrations.heading': 'Иллюстрации',
     'illustrations.hint': 'нажмите на картинку, чтобы рассмотреть её поближе',
     'illustrations.open': 'Открыть крупнее: ',
 
-    'animations.heading': 'Анимации',
-    'animations.subtitle': 'картинки, которые оживают',
-    'animations.soon': 'анимация скоро появится',
-    'animations.play': 'Смотреть анимацию: ',
-
     'about.heading': 'Немного обо мне',
-    'about.p1': 'Привет! Я Стейси Норт, иллюстратор детских книг.',
+    'about.p1': 'Привет! Я Stacy North, иллюстратор детских книг.',
     'about.p2':
       'Я рисую сказочные миры, полные фантазии: уютные домики, любопытных зверят и те крошечные детали, благодаря которым история становится по-настоящему родной.',
     'about.p3':
@@ -106,7 +96,7 @@ export const translations = {
     'contact.cta': 'Связаться',
     'contact.or': 'или загляните ко мне в Instagram',
 
-    'site.name': 'Стейси Норт',
+    'site.name': 'Stacy North',
     'footer.rights': 'Все иллюстрации защищены авторским правом.',
     'footer.top': 'наверх',
 
