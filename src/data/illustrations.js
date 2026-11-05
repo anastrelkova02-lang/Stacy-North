@@ -315,7 +315,8 @@ export const illustrations = [
  *   align   'left' | 'right' | 'center' — where a narrower row sits
  *   pair    'match'   → the two pictures get the same height (a portrait next to a landscape
  *                       automatically becomes much narrower, so nothing is cropped)
- *           'stagger' → two pictures at their own widths (`widths`), the second one lower (`drop`, %)
+ *           'stagger' → two pictures at their own widths (`widths`), the second one lower (`drop`, %);
+ *                       add valign: 'bottom' to sit both on one shared bottom edge
  *
  * Sizes were chosen from each file's real proportions:
  *   2:1 very wide → 80–100 %,  16:9 landscape → 60–70 % alone,
@@ -330,7 +331,8 @@ export const galleryLayout = [
   { ids: ['frog-pond'], width: 100 },
   { ids: ['whales'], width: 100 },
   { ids: ['savanna-hide-and-seek'], width: 100 },
-  { ids: ['cookie-tin-workshop', 'submarine'], pair: 'match', width: 90, align: 'left' },
+  // equal visual weight (same area on screen), sharing a bottom edge: the tin stands on its table, the submarine floats beside it
+  { ids: ['cookie-tin-workshop', 'submarine'], pair: 'stagger', widths: [40, 57], valign: 'bottom', width: 100 },
   { ids: ['moon-mice', 'muddy-piglet'], pair: 'stagger', widths: [44, 50], drop: 12, width: 100 },
   { ids: ['ghost-movie-night', 'coral-reef'], pair: 'match', width: 96, align: 'left' },
   { ids: ['safari-waterhole', 'apple-house'], pair: 'match', width: 86, align: 'right' },
