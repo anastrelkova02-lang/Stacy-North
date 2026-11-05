@@ -35,6 +35,10 @@ function applyTranslations() {
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     el.textContent = t(el.dataset.i18n);
   });
+  // texts that contain links (About section) — our own trusted strings from translations.js
+  document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+    el.innerHTML = t(el.dataset.i18nHtml);
+  });
   document.querySelectorAll('[data-i18n-attr]').forEach((el) => {
     el.dataset.i18nAttr.split(',').forEach((pair) => {
       const [attr, key] = pair.split(':').map((s) => s.trim());
@@ -47,6 +51,39 @@ function applyTranslations() {
 
   refreshGalleryText();
   if (lightbox.isOpen) lightbox.updateCaption();
+  liftFallbackGlyphs(document.body);
+}
+
+/* NaomisHand draws its letters well above the baseline and has no digits, dashes,
+   brackets or curly apostrophes. Those characters come from the companion font,
+   so we wrap them in <span class="nh"> and CSS lifts them to sit with the handwriting. */
+const FALLBACK_CHARS = /[0-9’‘“”\-–—()@©&/]+/g;
+function liftFallbackGlyphs(root) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const parent = node.parentElement;
+      if (!parent || parent.closest('script, style, svg, .nh, .lightbox')) return NodeFilter.FILTER_REJECT;
+      FALLBACK_CHARS.lastIndex = 0;
+      return FALLBACK_CHARS.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    },
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach((node) => {
+    const frag = document.createDocumentFragment();
+    let last = 0;
+    node.nodeValue.replace(FALLBACK_CHARS, (match, offset) => {
+      if (offset > last) frag.append(node.nodeValue.slice(last, offset));
+      const span = document.createElement('span');
+      span.className = 'nh';
+      span.textContent = match;
+      frag.append(span);
+      last = offset + match.length;
+      return match;
+    });
+    if (last < node.nodeValue.length) frag.append(node.nodeValue.slice(last));
+    node.replaceWith(frag);
+  });
 }
 
 function setMeta(selector, value) {
@@ -102,6 +139,13 @@ document.querySelectorAll('.social-icon').forEach((icon) => {
 
 /* ───────────────────────── galleries ───────────────────────── */
 
+// exact page width without the scrollbar, used by the edge-to-edge (bleed) pictures
+function setPageWidth() {
+  document.documentElement.style.setProperty('--page-w', `${document.documentElement.clientWidth}px`);
+}
+setPageWidth();
+window.addEventListener('resize', setPageWidth);
+
 const shapeOf = ({ width, height }) => {
   const r = width / height;
   if (r >= 1.3) return 'wide';
@@ -138,7 +182,7 @@ function buildGallery(container, items) {
     const alt = shape === 'wide' ? counters.wide % 2 : counters.flow++ % 2;
 
     const fig = document.createElement('figure');
-    fig.className = 'art reveal';
+    fig.className = item.bleed ? 'art art--bleed reveal' : 'art reveal';
     fig.dataset.shape = shape;
     fig.dataset.alt = String(alt);
     fig.style.setProperty('--start', layout.start);
@@ -146,7 +190,7 @@ function buildGallery(container, items) {
     fig.style.setProperty('--nudge', layout.nudge ?? 0);
     fig.style.setProperty('--ratio', `${item.width} / ${item.height}`);
 
-    const sizes = `(min-width: 961px) ${Math.round((layout.span / 12) * 100)}vw, (min-width: 601px) ${
+    const sizes = item.bleed ? '100vw' : `(min-width: 961px) ${Math.round((layout.span / 12) * 100)}vw, (min-width: 601px) ${
       shape === 'wide' ? 100 : 50
     }vw, 100vw`;
 
@@ -335,4 +379,5 @@ function setupReveal() {
 
 buildGallery(document.getElementById('illustrations-grid'), illustrations);
 applyTranslations();
+liftFallbackGlyphs(document.body);
 setupReveal();

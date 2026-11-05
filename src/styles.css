@@ -15,7 +15,7 @@
   src: url('/fonts/NaomisHand-Regular.ttf') format('truetype');
   font-display: swap;
   size-adjust: 270%;
-  unicode-range: U+0000-00FF, U+2018-201F, U+2026;
+  unicode-range: U+0000-00FF;
 }
 @font-face {
   font-family: 'Naomi';
@@ -68,7 +68,7 @@
   src: url('/fonts/Innocent.ttf') format('truetype');
   font-display: swap;
   size-adjust: 74%;
-  unicode-range: U+0000-00FF, U+2018-201F, U+2026;
+  unicode-range: U+0000-00FF;
 }
 @font-face {
   font-family: 'Innocent';
@@ -415,6 +415,21 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
   transform: translateY(-5px) scale(1.018);
 }
 
+/* edge-to-edge pictures: the full page width, from the left edge of the screen to the right */
+.art.art--bleed {
+  grid-column: 1 / -1;
+  width: var(--page-w, 100vw);
+  max-width: none;
+  margin-top: 0;
+  margin-left: calc(50% - var(--page-w, 100vw) / 2);
+  margin-right: 0;
+}
+.art--bleed .art-button:hover .art-frame img,
+.art--bleed .art-button:focus-visible .art-frame img {
+  transform: none;
+  opacity: 0.94;
+}
+
 .sketch-frame {
   position: absolute;
   inset: 0;
@@ -439,7 +454,7 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
   padding-top: clamp(60px, 9vw, 140px);
 }
 .about-photo {
-  grid-column: 2 / span 4;
+  grid-column: 1 / span 5;
 }
 .about-photo img {
   width: 100%;
@@ -481,6 +496,38 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
   margin-top: 1.6rem;
 }
 
+/* digits, dashes, brackets… borrowed from the companion font sit lower than NaomisHand —
+   lift them to the handwriting's baseline (English only; Ukrainian uses one font) */
+html:lang(en) .nh {
+  position: relative;
+  top: -0.33em;
+}
+.section-title .nh,
+.contact-title .nh,
+.contact-cta .nh {
+  top: 0;
+}
+
+/* links in the About text, marked as if with a red pencil */
+.pencil-link {
+  --pencil: #a8463a;
+  color: inherit;
+  text-decoration: none;
+  padding: 0 0.08em 0.12em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M1 7.2 C 18 5.6, 34 8.4, 52 6.6 S 88 5.4, 119 6.8' fill='none' stroke='%23a8463a' stroke-width='1.6' stroke-linecap='round' opacity='.9'/%3E%3Cpath d='M3 9.2 C 26 8.1, 47 9.9, 70 8.6 S 101 8.2, 117 9.4' fill='none' stroke='%23a8463a' stroke-width='1' stroke-linecap='round' opacity='.45'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 0.55em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: color 0.3s var(--ease), background-size 0.35s var(--ease);
+}
+.pencil-link:hover,
+.pencil-link:focus-visible {
+  color: var(--pencil);
+  background-size: 100% 0.75em;
+}
+
 /* ═══════════════ CONTACT ═══════════════ */
 .contact {
   text-align: center;
@@ -493,6 +540,8 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
   transform: rotate(-12deg);
 }
 .contact-title {
+  text-wrap: balance;
+  letter-spacing: 0;
   font-family: var(--heading);
   font-weight: 400;
   font-size: clamp(2.4rem, 1.4rem + 4.4vw, 5.2rem);
@@ -539,7 +588,7 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 0.3em;
-  word-break: break-word;
+  white-space: nowrap;
   transition: opacity 0.3s;
 }
 .contact-email a:hover {
@@ -752,10 +801,59 @@ html.lb-lock body {
   }
 }
 
+/* phones and small tablets: NaomisHand draws very airy letters — tighten them */
+@media (max-width: 700px) {
+  html:lang(en) :where(p, a, li, span) {
+    letter-spacing: -0.2em;
+    word-spacing: 0.18em;
+  }
+  html:lang(en) .nh {
+    letter-spacing: -0.04em;
+  }
+  html:lang(uk) body {
+    letter-spacing: 0;
+  }
+  html .section-title,
+  html .contact-title,
+  html .contact-cta,
+  html .contact-cta * {
+    letter-spacing: 0;
+  }
+  .contact-email a {
+    font-size: clamp(0.9rem, 4.6vw, 1.15rem);
+    letter-spacing: -0.2em;
+  }
+}
+
 /* mobile: one playful column */
 @media (max-width: 600px) {
   :root {
     --gap: 16px;
+  }
+  .section {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+  .section--gallery {
+    padding-top: 0;
+  }
+  .about {
+    padding-top: 56px;
+    padding-bottom: 8px;
+  }
+  .doodle--squiggle {
+    margin-top: 0.6rem;
+  }
+  .contact {
+    padding-top: 48px;
+    padding-bottom: 40px;
+  }
+  .contact-cta {
+    margin-top: 26px;
+  }
+  .site-footer {
+    gap: 18px;
+    padding-bottom: 28px;
   }
   .site-header {
     padding-top: 30px;
@@ -780,11 +878,10 @@ html.lb-lock body {
   .about {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 28px;
   }
   .about-photo {
-    width: 72%;
-    align-self: center;
+    width: 100%;
   }
   .about-text {
     width: 100%;
