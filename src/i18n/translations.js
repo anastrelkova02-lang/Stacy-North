@@ -32,13 +32,13 @@ export const translations = {
     'illustrations.open': 'Open larger: ',
 
     'about.heading': 'A little about me',
-    'about.p1': "Hi! I'm Stacy North, a children's book illustrator.",
+    'about.p1':
+      "Hi! I’m Anastasiia (stacynorth), a Ukrainian self-taught children’s book illustrator and aspiring author.",
     'about.p2':
-      'I draw whimsical, imaginative worlds — cosy little houses, curious animals and all the tiny details that make a story feel like home.',
+      "I worked as an illustrator and animator for <a class=\"pencil-link\" href=\"https://suspilne.media\" target=\"_blank\" rel=\"noopener noreferrer\">Suspilne Ukraine</a>, the country’s largest public broadcaster, creating illustrations and <a class=\"pencil-link\" href=\"https://youtube.com/@suspilnekazky?feature=shared\" target=\"_blank\" rel=\"noopener noreferrer\">animations for children’s fairy tales</a>. My freelance experience includes book illustration, character design, posters, postcards and editorial artwork.",
     'about.p3':
-      'My favourite part of the work is bringing stories and characters to life, so that readers of every age want to step inside the page and stay a little longer.',
-    'about.p4': 'If you have a story waiting for its pictures, I would love to hear about it.',
-    'about.photo': 'photo coming soon',
+      "I create charming characters and cozy, imaginative worlds, helping authors bring their children’s stories to life. I’d love to illustrate your next book!",
+    'about.photoAlt': "Anastasiia (stacynorth), children’s book illustrator",
 
     'contact.heading': 'Have a project in mind?',
     'contact.sub': "Let's create something magical together!",
@@ -74,13 +74,13 @@ export const translations = {
     'illustrations.open': 'Переглянути більшою: ',
 
     'about.heading': 'Трохи про мене',
-    'about.p1': 'Привіт! Я Stacy North, ілюстраторка дитячих книжок.',
+    'about.p1':
+      "Привіт! Я Анастасія (stacynorth) — українська художниця-самоучка, яка створює ілюстрації для дитячих книжок, а також авторка-початківиця.",
     'about.p2':
-      'Я малюю казкові світи, сповнені фантазії: затишні будиночки, допитливих звірят і ті крихітні деталі, завдяки яким історія стає по-справжньому рідною.',
+      "Я працювала ілюстраторкою та аніматоркою на <a class=\"pencil-link\" href=\"https://suspilne.media\" target=\"_blank\" rel=\"noopener noreferrer\">Суспільному</a> — найбільшому суспільному мовнику України, створюючи ілюстрації та <a class=\"pencil-link\" href=\"https://youtube.com/@suspilnekazky?feature=shared\" target=\"_blank\" rel=\"noopener noreferrer\">анімації для дитячих казок</a>. У межах фриланс-проєктів я також займаюся книжковою ілюстрацією, розробкою персонажів, створенням постерів, листівок та ілюстрацій для редакційних видань.",
     'about.p3':
-      'Найбільше у своїй роботі я люблю оживляти історії та персонажів — так, щоб читачеві будь-якого віку захотілося ступити всередину сторінки й затриматися там трохи довше.',
-    'about.p4': 'Якщо у вас є історія, яка чекає на свої малюнки, я буду рада про неї почути.',
-    'about.photo': 'тут незабаром буде фото',
+      "Я створюю чарівних персонажів і затишні, сповнені уяви світи, допомагаючи авторам втілювати їхні дитячі історії в життя. Буду рада проілюструвати вашу наступну книжку!",
+    'about.photoAlt': "Анастасія (stacynorth), ілюстраторка дитячих книжок",
 
     'contact.heading': 'Маєте ідею для проєкту?',
     'contact.sub': 'Давайте створимо щось чарівне разом!',
