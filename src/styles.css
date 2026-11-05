@@ -420,6 +420,10 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
 .art-row--stagger .art:nth-child(2) {
   margin-top: var(--drop, 0);
 }
+/* two pictures resting on one shared bottom edge */
+.art-row--bottom {
+  align-items: flex-end;
+}
 
 .art {
   margin: 0;
@@ -912,6 +916,15 @@ html.lb-lock body {
   }
   .art-row--stagger .art:nth-child(2) {
     margin-top: 0;
+  }
+  /* a bottom-aligned duo becomes a gentle diagonal: portrait left, landscape right */
+  .art-row--bottom .art[data-shape]:first-child {
+    width: 60%;
+    margin: 0 auto 0 0;
+  }
+  .art-row--bottom .art[data-shape]:last-child {
+    width: 88%;
+    margin: -14px 0 0 auto;
   }
   /* full-width rows on desktop stay full width on phones */
   .art-row--full .art[data-shape] {

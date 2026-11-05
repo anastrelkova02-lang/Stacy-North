@@ -169,6 +169,7 @@ function buildGallery(container, items) {
     if (!row.pair && (row.width ?? 100) >= 100) rowEl.classList.add('art-row--full');
     rowEl.style.setProperty('--row-w', `${row.width ?? 100}%`);
     if (row.drop) rowEl.style.setProperty('--drop', `${row.drop}%`);
+    if (row.valign === 'bottom') rowEl.classList.add('art-row--bottom');
 
     row.ids.forEach((id, k) => {
       const { item, index } = byId[id];
