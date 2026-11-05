@@ -17,5 +17,5 @@ export const SITE = {
   defaultLang: 'en',
 
   // Public site URL (used for social previews). Update after your first Vercel deploy.
-  url: 'https://stasynorth.vercel.app',
+  url: 'https://stacynorth.vercel.app',
 };

@@ -187,7 +187,7 @@ function buildGallery(container, items) {
       const share = row.pair === 'stagger' ? row.widths[k] : row.pair === 'match'
         ? ((row.width ?? 100) * ratio) / row.ids.reduce((sum, rid) => sum + byId[rid].item.width / byId[rid].item.height, 0)
         : row.width ?? 100;
-      const sizes = `(min-width: 601px) ${Math.round(share * 0.9)}vw, ${shape === 'tall' ? 66 : 92}vw`;
+      const sizes = row.pair ? `(min-width: 601px) ${Math.round(share * 0.9)}vw, 92vw` : '(min-width: 601px) min(800px, 90vw), 92vw';
 
       const btn = document.createElement('button');
       btn.type = 'button';

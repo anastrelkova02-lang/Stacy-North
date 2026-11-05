@@ -376,7 +376,8 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
    Each picture keeps its own proportions: landscapes are large, portraits
    and squares much narrower, nothing is cropped or stretched.            */
 .canvas {
-  max-width: 1240px;
+  /* every illustration is shown at exactly this width (or the full column on smaller screens) */
+  max-width: 800px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -885,8 +886,7 @@ html.lb-lock body {
     font-size: 1.02rem;
     padding: 0 0.2em 0.3em;
   }
-  /* phones: one picture per line — landscapes fill the column edge to edge,
-     squares and portraits are narrower and centred on the same axis */
+  /* phones: one picture per line, every picture the full column width */
   .canvas {
     row-gap: 32px;
   }
@@ -897,12 +897,6 @@ html.lb-lock body {
     flex: none;
     width: 100%;
     margin: 0 auto;
-  }
-  .art[data-shape='square'] {
-    width: 82%;
-  }
-  .art[data-shape='tall'] {
-    width: 72%;
   }
   .about {
     display: flex;
