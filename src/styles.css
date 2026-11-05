@@ -371,21 +371,58 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
   color: var(--ink-soft);
 }
 
-/* ═══════════════ THE CANVAS (gallery) ═══════════════
-   12 columns on desktop. Each piece sets its own
-   --start / --span / --nudge from the data files.        */
+/* ═══════════════ THE GALLERY ═══════════════
+   Composed row by row (see `galleryLayout` in src/data/illustrations.js).
+   Each picture keeps its own proportions: landscapes are large, portraits
+   and squares much narrower, nothing is cropped or stretched.            */
 .canvas {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--gap);
-  row-gap: clamp(36px, 5vw, 80px);
-  align-items: start;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: clamp(48px, 6.5vw, 104px);
+}
+
+.art-row {
+  width: var(--row-w, 100%);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap);
+}
+.art-row--left {
+  margin-right: auto;
+}
+.art-row--right {
+  margin-left: auto;
+}
+.art-row--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* one picture */
+.art-row--single .art {
+  width: 100%;
+}
+/* two pictures of the same height: widths follow their proportions */
+.art-row--match .art {
+  flex: var(--ratio) 1 0;
+  min-width: 0;
+}
+/* two pictures at their own widths, the second set a little lower */
+.art-row--stagger {
+  justify-content: space-between;
+}
+.art-row--stagger .art {
+  flex: none;
+  width: var(--w);
+}
+.art-row--stagger .art:nth-child(2) {
+  margin-top: var(--drop, 0);
 }
 
 .art {
   margin: 0;
-  grid-column: var(--start, auto) / span var(--span, 6);
-  margin-top: calc(var(--nudge, 0) * var(--nudge-unit));
 }
 
 .art-button {
@@ -402,8 +439,9 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
 .art-frame img {
   display: block;
   width: 100%;
-  max-width: none;
   height: auto;
+  aspect-ratio: var(--ratio);
+  object-fit: contain;
   opacity: 0;
   transition: transform 0.9s var(--ease), opacity 0.6s var(--ease);
 }
@@ -412,22 +450,7 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
 }
 .art-button:hover .art-frame img,
 .art-button:focus-visible .art-frame img {
-  transform: translateY(-5px) scale(1.018);
-}
-
-/* edge-to-edge pictures: the full page width, from the left edge of the screen to the right */
-.art.art--bleed {
-  grid-column: 1 / -1;
-  width: var(--page-w, 100vw);
-  max-width: none;
-  margin-top: 0;
-  margin-left: calc(50% - var(--page-w, 100vw) / 2);
-  margin-right: 0;
-}
-.art--bleed .art-button:hover .art-frame img,
-.art--bleed .art-button:focus-visible .art-frame img {
-  transform: none;
-  opacity: 0.94;
+  transform: translateY(-4px) scale(1.012);
 }
 
 .sketch-frame {
@@ -782,16 +805,8 @@ html.lb-lock body {
   :root {
     --nudge-unit: 0.5rem;
   }
-  .canvas {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    grid-auto-flow: row dense;
-  }
-  .art {
-    grid-column: auto / span 3;
-  }
-  .art[data-shape='wide'] {
-    grid-column: 1 / -1;
-    --nudge: 0 !important;
+  .art-row--single {
+    width: min(100%, calc(var(--row-w, 100%) + 10%));
   }
   .about-photo {
     grid-column: 1 / span 5;
@@ -866,13 +881,36 @@ html.lb-lock body {
     font-size: 1.02rem;
     padding: 0 0.2em 0.3em;
   }
+  /* phones: one picture per line, sized by its shape — never all full width */
   .canvas {
-    display: flex;
-    flex-direction: column;
-    row-gap: 44px;
+    row-gap: 40px;
   }
-  .art {
+  .art-row {
+    display: contents;
+  }
+  .art-row .art {
+    flex: none;
+    margin: 0 auto;
+  }
+  .art[data-shape='panorama'] {
     width: 100%;
+  }
+  .art[data-shape='wide'] {
+    width: 90%;
+  }
+  .art[data-shape='wide'][data-side='left'] {
+    margin-left: 0;
+  }
+  .art[data-shape='wide'][data-side='right'] {
+    margin-right: 0;
+  }
+  .art[data-shape='square'] {
+    width: 76%;
+  }
+  .art[data-shape='tall'] {
+    width: 64%;
+  }
+  .art-row--stagger .art:nth-child(2) {
     margin-top: 0;
   }
   .about {

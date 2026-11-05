@@ -1,7 +1,7 @@
 import './styles.css';
 import { SITE } from './config.js';
 import { translations } from './i18n/translations.js';
-import { illustrations } from './data/illustrations.js';
+import { illustrations, galleryLayout } from './data/illustrations.js';
 
 const STORAGE_KEY = 'stacy-north-lang';
 const LANGS = ['en', 'uk'];
@@ -139,91 +139,86 @@ document.querySelectorAll('.social-icon').forEach((icon) => {
 
 /* ───────────────────────── galleries ───────────────────────── */
 
-// exact page width without the scrollbar, used by the edge-to-edge (bleed) pictures
-function setPageWidth() {
-  document.documentElement.style.setProperty('--page-w', `${document.documentElement.clientWidth}px`);
-}
-setPageWidth();
-window.addEventListener('resize', setPageWidth);
-
 const shapeOf = ({ width, height }) => {
   const r = width / height;
-  if (r >= 1.3) return 'wide';
+  if (r >= 1.9) return 'panorama'; // 2:1 and wider
+  if (r >= 1.2) return 'wide'; // 16:9 and similar
   if (r >= 0.9) return 'square';
   return 'tall';
 };
 
-// pleasant automatic positions for entries without a `layout`
-const AUTO = {
-  wide: [
-    { start: 1, span: 8, nudge: 0 },
-    { start: 5, span: 8, nudge: 2 },
-  ],
-  square: [
-    { start: 1, span: 6, nudge: 0 },
-    { start: 7, span: 6, nudge: 3 },
-  ],
-  tall: [
-    { start: 8, span: 5, nudge: 3 },
-    { start: 1, span: 5, nudge: 0 },
-  ],
-};
-
 const galleryItems = []; // { item, el } — used to re-translate in place
+
+// rows from `galleryLayout`; anything missing or out of order falls back to one picture per row
+function rowsFor(items) {
+  const flat = galleryLayout.flatMap((row) => row.ids);
+  const sameOrder = flat.length === items.length && flat.every((id, i) => items[i].id === id);
+  if (sameOrder) return galleryLayout;
+  console.warn('galleryLayout does not match the illustrations list — using a simple layout');
+  return items.map((item) => ({ ids: [item.id], width: shapeOf(item) === 'tall' ? 34 : 70, align: 'center' }));
+}
 
 function buildGallery(container, items) {
   if (!container) return;
-  const counters = { wide: 0, square: 0, tall: 0, flow: 0 };
+  const byId = Object.fromEntries(items.map((item, index) => [item.id, { item, index }]));
+  const phoneSide = { wide: 0, panorama: 0 };
 
-  items.forEach((item, index) => {
-    const shape = shapeOf(item);
-    const layout = item.layout ?? AUTO[shape][counters[shape] % AUTO[shape].length];
-    counters[shape]++;
-    const alt = shape === 'wide' ? counters.wide % 2 : counters.flow++ % 2;
+  rowsFor(items).forEach((row) => {
+    const rowEl = document.createElement('div');
+    rowEl.className = `art-row art-row--${row.pair ?? 'single'} art-row--${row.align ?? 'center'}`;
+    rowEl.style.setProperty('--row-w', `${row.width ?? 100}%`);
+    if (row.drop) rowEl.style.setProperty('--drop', `${row.drop}%`);
 
-    const fig = document.createElement('figure');
-    fig.className = item.bleed ? 'art art--bleed reveal' : 'art reveal';
-    fig.dataset.shape = shape;
-    fig.dataset.alt = String(alt);
-    fig.style.setProperty('--start', layout.start);
-    fig.style.setProperty('--span', layout.span);
-    fig.style.setProperty('--nudge', layout.nudge ?? 0);
-    fig.style.setProperty('--ratio', `${item.width} / ${item.height}`);
+    row.ids.forEach((id, k) => {
+      const { item, index } = byId[id];
+      const shape = shapeOf(item);
+      const ratio = item.width / item.height;
 
-    const sizes = item.bleed ? '100vw' : `(min-width: 961px) ${Math.round((layout.span / 12) * 100)}vw, (min-width: 601px) ${
-      shape === 'wide' ? 100 : 50
-    }vw, 100vw`;
+      const fig = document.createElement('figure');
+      fig.className = 'art reveal';
+      fig.dataset.shape = shape;
+      if (phoneSide[shape] !== undefined) fig.dataset.side = phoneSide[shape]++ % 2 ? 'right' : 'left';
+      fig.style.setProperty('--ratio', ratio);
+      if (row.pair === 'stagger') fig.style.setProperty('--w', `${row.widths[k]}%`);
 
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'art-button';
-    btn.addEventListener('click', () => lightbox.open(items, index, btn));
+      // rough share of the screen this picture takes, so the browser loads a sensible file size
+      const share = row.pair === 'stagger' ? row.widths[k] : row.pair === 'match'
+        ? (row.width * ratio) / row.ids.reduce((sum, rid) => sum + byId[rid].item.width / byId[rid].item.height, 0)
+        : row.width ?? 100;
+      const sizes = `(min-width: 601px) ${Math.round(share * 0.9)}vw, ${shape === 'tall' ? 66 : 92}vw`;
 
-    const frame = document.createElement('span');
-    frame.className = 'art-frame';
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'art-button';
+      btn.addEventListener('click', () => lightbox.open(items, index, btn));
 
-    const img = new Image();
-    img.src = item.src;
-    const thumbW = Math.min(1100, item.width);
-    const fullW = Math.min(2400, item.width);
-    if (item.full && item.full !== item.src && fullW > thumbW) {
-      img.srcset = `${item.src} ${thumbW}w, ${item.full} ${fullW}w`;
-      img.sizes = sizes;
-    }
-    img.width = item.width;
-    img.height = item.height;
-    img.decoding = 'async';
-    img.loading = index < 2 ? 'eager' : 'lazy';
-    if (index < 2) img.fetchPriority = 'high';
-    const markLoaded = () => img.classList.add('is-loaded');
-    img.complete ? markLoaded() : img.addEventListener('load', markLoaded, { once: true });
-    img.addEventListener('error', markLoaded, { once: true });
-    frame.appendChild(img);
+      const frame = document.createElement('span');
+      frame.className = 'art-frame';
 
-    btn.append(frame);
-    fig.appendChild(btn);
-    container.appendChild(fig);
-    galleryItems.push({ item, el: fig });
+      const img = new Image();
+      img.src = item.src;
+      const thumbW = Math.min(1100, item.width);
+      const fullW = Math.min(2400, item.width);
+      if (item.full && item.full !== item.src && fullW > thumbW) {
+        img.srcset = `${item.src} ${thumbW}w, ${item.full} ${fullW}w`;
+        img.sizes = sizes;
+      }
+      img.width = item.width;
+      img.height = item.height;
+      img.decoding = 'async';
+      img.loading = index < 2 ? 'eager' : 'lazy';
+      if (index < 2) img.fetchPriority = 'high';
+      const markLoaded = () => img.classList.add('is-loaded');
+      img.complete ? markLoaded() : img.addEventListener('load', markLoaded, { once: true });
+      img.addEventListener('error', markLoaded, { once: true });
+      frame.appendChild(img);
+
+      btn.append(frame);
+      fig.appendChild(btn);
+      rowEl.appendChild(fig);
+      galleryItems.push({ item, el: fig });
+    });
+    container.appendChild(rowEl);
   });
 }
 
