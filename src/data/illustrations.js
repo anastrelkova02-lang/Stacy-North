@@ -311,31 +311,31 @@ export const illustrations = [
  * GALLERY COMPOSITION — how the pictures above are arranged on desktop, row by row.
  * Every id must appear once, in the same order as the list above.
  *
- *   width   share of the gallery width the row takes (in %)
- *   align   'left' | 'right' | 'center' — where a narrower row sits
- *   pair    'match'   → the two pictures get the same height (a portrait next to a landscape
- *                       automatically becomes much narrower, so nothing is cropped)
- *           'stagger' → two pictures at their own widths (`widths`), the second one lower (`drop`, %);
- *                       add valign: 'bottom' to sit both on one shared bottom edge
+ * Every row spans the full gallery width, so all pictures share the same left and right
+ * page edges and the same spacing between rows.
  *
- * Sizes were chosen from each file's real proportions:
- *   2:1 very wide → 80–100 %,  16:9 landscape → 60–70 % alone,
- *   4:5 portrait → ~28–33 % (always beside a landscape, never alone and wide),  1:1 square → ~36 %.
- * On phones every picture gets its own line; width depends on its shape (see styles.css).
+ *   pair    'match'   → the two pictures get the same height and together fill the row
+ *                       (a portrait next to a landscape automatically becomes much narrower)
+ *           'stagger' → two pictures at their own widths (`widths`, in %), pushed to both edges;
+ *                       add valign: 'bottom' to sit both on one shared bottom edge
+ *   (optional) width / align — a narrower row and where it sits; not used at the moment
+ *
+ * On phones every picture gets its own line: landscapes full width, squares and portraits
+ * narrower and centred (see styles.css).
  */
 export const galleryLayout = [
-  { ids: ['rainy-campfire'], width: 100 },
-  { ids: ['stork-school'], width: 100 },
-  { ids: ['baxter-autumn'], width: 100 },
-  { ids: ['stump-house', 'tomato-soup-tower'], pair: 'match', width: 92, align: 'right' },
-  { ids: ['frog-pond'], width: 100 },
-  { ids: ['whales'], width: 100 },
-  { ids: ['savanna-hide-and-seek'], width: 100 },
+  { ids: ['rainy-campfire'] },
+  { ids: ['stork-school'] },
+  { ids: ['baxter-autumn'] },
+  { ids: ['stump-house', 'tomato-soup-tower'], pair: 'match' },
+  { ids: ['frog-pond'] },
+  { ids: ['whales'] },
+  { ids: ['savanna-hide-and-seek'] },
   // equal visual weight (same area on screen), sharing a bottom edge: the tin stands on its table, the submarine floats beside it
-  { ids: ['cookie-tin-workshop', 'submarine'], pair: 'stagger', widths: [40, 57], valign: 'bottom', width: 100 },
-  { ids: ['moon-mice', 'muddy-piglet'], pair: 'stagger', widths: [44, 50], drop: 12, width: 100 },
-  { ids: ['ghost-movie-night', 'coral-reef'], pair: 'match', width: 96, align: 'left' },
-  { ids: ['safari-waterhole', 'apple-house'], pair: 'match', width: 86, align: 'right' },
-  { ids: ['forest-house'], width: 84, align: 'left' },
-  { ids: ['gingerbread-house', 'pumpkin-evening'], pair: 'stagger', widths: [46, 41], drop: 9, width: 74, align: 'center' },
+  { ids: ['cookie-tin-workshop', 'submarine'], pair: 'stagger', widths: [40, 57], valign: 'bottom' },
+  { ids: ['moon-mice', 'muddy-piglet'], pair: 'match' },
+  { ids: ['ghost-movie-night', 'coral-reef'], pair: 'match' },
+  { ids: ['safari-waterhole', 'apple-house'], pair: 'match' },
+  { ids: ['forest-house'] },
+  { ids: ['gingerbread-house', 'pumpkin-evening'], pair: 'match' },
 ];
