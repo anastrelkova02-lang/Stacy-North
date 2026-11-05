@@ -17,12 +17,7 @@
  *    width / height   original pixel size (used to keep the exact proportions — no cropping)
  *    title / description   { en, uk }  — not shown on the page; used as the image alt text
  *                          (for visitors using screen readers) and for search engines
- *    layout   (optional, desktop only) position on a 12-column canvas:
- *               start  → column where the picture begins (1–12)
- *               span   → how many columns wide it is
- *               nudge  → extra space above it, in rem (creates the playful, uneven rhythm)
- *             Leave `layout` out and the site picks a pleasant position automatically.
- *    bleed    true → the picture spans the whole page width, edge to edge (ignores `layout`)
+ *    The arrangement on the page is set in `galleryLayout` at the bottom of this file.
  */
 export const illustrations = [
   {
@@ -38,8 +33,7 @@ export const illustrations = [
     description: {
       en: "A little mouse in a yellow raincoat toasts marshmallows by her glowing log house.",
       uk: "Мишка в жовтому дощовику підсмажує маршмелоу біля свого сяйливого будиночка в колоді."
-    },
-    bleed: true
+    }
   },
   {
     id: "stork-school",
@@ -54,8 +48,7 @@ export const illustrations = [
     description: {
       en: "A stork with a backpack full of books flies past a big autumn tree, where little animals hold colourful balloons.",
       uk: "Лелека з рюкзаком, повним книжок, пролітає повз велике осіннє дерево, під яким маленькі звірята тримають різнобарвні кульки."
-    },
-    bleed: true
+    }
   },
   {
     id: "baxter-autumn",
@@ -70,8 +63,7 @@ export const illustrations = [
     description: {
       en: "Baxter the bear cub in a golden autumn forest, where beavers saw logs and raccoons hang mushrooms out to dry.",
       uk: "Ведмежа Бакстер у золотому осінньому лісі, де бобри пиляють колоди, а єноти сушать гриби."
-    },
-    bleed: true
+    }
   },
   {
     id: "stump-house",
@@ -86,8 +78,7 @@ export const illustrations = [
     description: {
       en: "A mouse sweeps up fallen leaves in front of her tree-stump house.",
       uk: "Мишка підмітає опале листя біля свого будиночка в старому пні."
-    },
-    bleed: true
+    }
   },
   {
     id: "tomato-soup-tower",
@@ -102,8 +93,7 @@ export const illustrations = [
     description: {
       en: "A tiny worm's tea house built from tins, glowing among giant leaves and fireflies at night.",
       uk: "Чайний будиночок маленького хробачка, збудований із консервних бляшанок, світиться вночі серед величезного листя та світлячків."
-    },
-    bleed: true
+    }
   },
   {
     id: "frog-pond",
@@ -118,8 +108,7 @@ export const illustrations = [
     description: {
       en: "Two frogs spend a lazy summer day on the pond, surrounded by dragonflies.",
       uk: "Дві жабки проводять лінивий літній день на ставку серед бабок."
-    },
-    bleed: true
+    }
   },
   {
     id: "whales",
@@ -134,8 +123,7 @@ export const illustrations = [
     description: {
       en: "Gentle whales drift through the deep blue sea.",
       uk: "Лагідні кити пливуть глибоким синім морем."
-    },
-    bleed: true
+    }
   },
   {
     id: "savanna-hide-and-seek",
@@ -150,8 +138,7 @@ export const illustrations = [
     description: {
       en: "An elephant, a rhino, a giraffe, a zebra and a gazelle play hide and seek among the bushes of the savanna.",
       uk: "Слон, носоріг, жирафа, зебра й газель граються в хованки серед кущів савани."
-    },
-    bleed: true
+    }
   },
   {
     id: "cookie-tin-workshop",
@@ -166,8 +153,7 @@ export const illustrations = [
     description: {
       en: "A ladybug knits a long scarf inside a cookie tin full of sewing treasures.",
       uk: "Сонечко в’яже довгий шарф у бляшаній коробці, повній швейних скарбів."
-    },
-    bleed: true
+    }
   },
   {
     id: "submarine",
@@ -182,8 +168,7 @@ export const illustrations = [
     description: {
       en: "A tiny submarine explores the underwater world.",
       uk: "Маленький підводний човен досліджує підводний світ."
-    },
-    bleed: true
+    }
   },
   {
     id: "moon-mice",
@@ -198,8 +183,7 @@ export const illustrations = [
     description: {
       en: "Little mice on an adventure to the moon.",
       uk: "Маленькі мишки вирушають у пригоду на Місяць."
-    },
-    bleed: true
+    }
   },
   {
     id: "muddy-piglet",
@@ -214,8 +198,7 @@ export const illustrations = [
     description: {
       en: "A happy piglet splashes in a puddle of mud.",
       uk: "Щасливе поросятко хлюпається в калюжі."
-    },
-    bleed: true
+    }
   },
   {
     id: "ghost-movie-night",
@@ -230,8 +213,7 @@ export const illustrations = [
     description: {
       en: "Even ghosts get scared at a horror movie.",
       uk: "Навіть привиди бояться фільмів жахів."
-    },
-    bleed: true
+    }
   },
   {
     id: "coral-reef",
@@ -246,8 +228,7 @@ export const illustrations = [
     description: {
       en: "Two little divers meet a curious crab and a friendly octopus on a bright coral reef.",
       uk: "Двоє маленьких пірнальників знайомляться з допитливим крабом і привітним восьминогом на яскравому кораловому рифі."
-    },
-    bleed: true
+    }
   },
   {
     id: "safari-waterhole",
@@ -262,8 +243,7 @@ export const illustrations = [
     description: {
       en: "Animals gather at the waterhole on a sunny safari day.",
       uk: "Тварини збираються біля водопою в сонячний день сафарі."
-    },
-    bleed: true
+    }
   },
   {
     id: "apple-house",
@@ -278,8 +258,7 @@ export const illustrations = [
     description: {
       en: "Two worms share tea and cake in their warm apple home while it rains outside.",
       uk: "Два хробачки п’ють чай із тістечком у своєму теплому яблучному будиночку, поки надворі йде дощ."
-    },
-    bleed: true
+    }
   },
   {
     id: "forest-house",
@@ -294,8 +273,7 @@ export const illustrations = [
     description: {
       en: "A cosy hill house with a glowing round door and window in the night forest.",
       uk: "Затишний будиночок у пагорбі з круглими дверима та теплим вогником у вікні серед нічного лісу."
-    },
-    bleed: true
+    }
   },
   {
     id: "gingerbread-house",
@@ -310,8 +288,7 @@ export const illustrations = [
     description: {
       en: "Decorating a gingerbread house while the snow falls outside.",
       uk: "Поки за вікном падає сніг, дівчинка прикрашає пряниковий будиночок."
-    },
-    bleed: true
+    }
   },
   {
     id: "pumpkin-evening",
@@ -326,7 +303,36 @@ export const illustrations = [
     description: {
       en: "A bear carves a pumpkin by the fireplace, with two little ghosts for company.",
       uk: "Ведмідь вирізає гарбуз біля каміна, а компанію йому складають двоє маленьких привидів."
-    },
-    bleed: true
+    }
   }
+];
+
+/**
+ * GALLERY COMPOSITION — how the pictures above are arranged on desktop, row by row.
+ * Every id must appear once, in the same order as the list above.
+ *
+ *   width   share of the gallery width the row takes (in %)
+ *   align   'left' | 'right' | 'center' — where a narrower row sits
+ *   pair    'match'   → the two pictures get the same height (a portrait next to a landscape
+ *                       automatically becomes much narrower, so nothing is cropped)
+ *           'stagger' → two pictures at their own widths (`widths`), the second one lower (`drop`, %)
+ *
+ * Sizes were chosen from each file's real proportions:
+ *   2:1 very wide → 80–100 %,  16:9 landscape → 60–70 % alone,
+ *   4:5 portrait → ~28–33 % (always beside a landscape, never alone and wide),  1:1 square → ~36 %.
+ * On phones every picture gets its own line; width depends on its shape (see styles.css).
+ */
+export const galleryLayout = [
+  { ids: ['rainy-campfire'], width: 100 },
+  { ids: ['stork-school'], width: 64, align: 'right' },
+  { ids: ['baxter-autumn', 'stump-house'], pair: 'match', width: 100 },
+  { ids: ['tomato-soup-tower'], width: 80, align: 'left' },
+  { ids: ['frog-pond', 'whales'], pair: 'stagger', widths: [52, 40], drop: 14, width: 100 },
+  { ids: ['savanna-hide-and-seek', 'cookie-tin-workshop'], pair: 'match', width: 88, align: 'right' },
+  { ids: ['submarine'], width: 66, align: 'center' },
+  { ids: ['moon-mice', 'muddy-piglet'], pair: 'stagger', widths: [44, 50], drop: 12, width: 100 },
+  { ids: ['ghost-movie-night', 'coral-reef'], pair: 'match', width: 96, align: 'left' },
+  { ids: ['safari-waterhole', 'apple-house'], pair: 'match', width: 86, align: 'right' },
+  { ids: ['forest-house'], width: 84, align: 'left' },
+  { ids: ['gingerbread-house', 'pumpkin-evening'], pair: 'stagger', widths: [46, 41], drop: 9, width: 74, align: 'center' },
 ];
