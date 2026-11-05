@@ -913,6 +913,11 @@ html.lb-lock body {
   .art-row--stagger .art:nth-child(2) {
     margin-top: 0;
   }
+  /* full-width rows on desktop stay full width on phones */
+  .art-row--full .art[data-shape] {
+    width: 100%;
+    margin: 0;
+  }
   .about {
     display: flex;
     flex-direction: column;

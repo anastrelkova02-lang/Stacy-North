@@ -166,6 +166,7 @@ function buildGallery(container, items) {
   rowsFor(items).forEach((row) => {
     const rowEl = document.createElement('div');
     rowEl.className = `art-row art-row--${row.pair ?? 'single'} art-row--${row.align ?? 'center'}`;
+    if (!row.pair && (row.width ?? 100) >= 100) rowEl.classList.add('art-row--full');
     rowEl.style.setProperty('--row-w', `${row.width ?? 100}%`);
     if (row.drop) rowEl.style.setProperty('--drop', `${row.drop}%`);
 
