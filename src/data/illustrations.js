@@ -308,34 +308,9 @@ export const illustrations = [
 ];
 
 /**
- * GALLERY COMPOSITION — how the pictures above are arranged on desktop, row by row.
- * Every id must appear once, in the same order as the list above.
- *
- * Every row spans the full gallery width, so all pictures share the same left and right
- * page edges and the same spacing between rows.
- *
- *   pair    'match'   → the two pictures get the same height and together fill the row
- *                       (a portrait next to a landscape automatically becomes much narrower)
- *           'stagger' → two pictures at their own widths (`widths`, in %), pushed to both edges;
- *                       add valign: 'bottom' to sit both on one shared bottom edge
- *   (optional) width / align — a narrower row and where it sits; not used at the moment
- *
- * On phones every picture gets its own line: landscapes full width, squares and portraits
- * narrower and centred (see styles.css).
+ * GALLERY COMPOSITION — one picture per row, in the order of the list above.
+ * Every illustration has exactly the same width (the gallery width, see `.canvas` in
+ * styles.css); its height follows its own proportions, so portraits are taller and
+ * landscapes shorter. Nothing is cropped or stretched.
  */
-export const galleryLayout = [
-  { ids: ['rainy-campfire'] },
-  { ids: ['stork-school'] },
-  { ids: ['baxter-autumn'] },
-  { ids: ['stump-house', 'tomato-soup-tower'], pair: 'match' },
-  { ids: ['frog-pond'] },
-  { ids: ['whales'] },
-  { ids: ['savanna-hide-and-seek'] },
-  // equal visual weight (same area on screen), sharing a bottom edge: the tin stands on its table, the submarine floats beside it
-  { ids: ['cookie-tin-workshop', 'submarine'], pair: 'stagger', widths: [40, 57], valign: 'bottom' },
-  { ids: ['moon-mice', 'muddy-piglet'], pair: 'match' },
-  { ids: ['ghost-movie-night', 'coral-reef'], pair: 'match' },
-  { ids: ['safari-waterhole', 'apple-house'], pair: 'match' },
-  { ids: ['forest-house'] },
-  { ids: ['gingerbread-house', 'pumpkin-evening'], pair: 'match' },
-];
+export const galleryLayout = illustrations.map(({ id }) => ({ ids: [id] }));
