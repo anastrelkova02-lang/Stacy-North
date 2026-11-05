@@ -185,7 +185,7 @@ function buildGallery(container, items) {
 
       // rough share of the screen this picture takes, so the browser loads a sensible file size
       const share = row.pair === 'stagger' ? row.widths[k] : row.pair === 'match'
-        ? (row.width * ratio) / row.ids.reduce((sum, rid) => sum + byId[rid].item.width / byId[rid].item.height, 0)
+        ? ((row.width ?? 100) * ratio) / row.ids.reduce((sum, rid) => sum + byId[rid].item.width / byId[rid].item.height, 0)
         : row.width ?? 100;
       const sizes = `(min-width: 601px) ${Math.round(share * 0.9)}vw, ${shape === 'tall' ? 66 : 92}vw`;
 

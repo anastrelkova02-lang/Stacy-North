@@ -380,7 +380,7 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  row-gap: clamp(48px, 6.5vw, 104px);
+  row-gap: clamp(40px, 5vw, 80px);
 }
 
 .art-row {
@@ -885,51 +885,24 @@ html.lb-lock body {
     font-size: 1.02rem;
     padding: 0 0.2em 0.3em;
   }
-  /* phones: one picture per line, sized by its shape — never all full width */
+  /* phones: one picture per line — landscapes fill the column edge to edge,
+     squares and portraits are narrower and centred on the same axis */
   .canvas {
-    row-gap: 40px;
+    row-gap: 32px;
   }
   .art-row {
     display: contents;
   }
   .art-row .art {
     flex: none;
+    width: 100%;
     margin: 0 auto;
   }
-  .art[data-shape='panorama'] {
-    width: 100%;
-  }
-  .art[data-shape='wide'] {
-    width: 90%;
-  }
-  .art[data-shape='wide'][data-side='left'] {
-    margin-left: 0;
-  }
-  .art[data-shape='wide'][data-side='right'] {
-    margin-right: 0;
-  }
   .art[data-shape='square'] {
-    width: 76%;
+    width: 82%;
   }
   .art[data-shape='tall'] {
-    width: 64%;
-  }
-  .art-row--stagger .art:nth-child(2) {
-    margin-top: 0;
-  }
-  /* a bottom-aligned duo becomes a gentle diagonal: portrait left, landscape right */
-  .art-row--bottom .art[data-shape]:first-child {
-    width: 60%;
-    margin: 0 auto 0 0;
-  }
-  .art-row--bottom .art[data-shape]:last-child {
-    width: 88%;
-    margin: -14px 0 0 auto;
-  }
-  /* full-width rows on desktop stay full width on phones */
-  .art-row--full .art[data-shape] {
-    width: 100%;
-    margin: 0;
+    width: 72%;
   }
   .about {
     display: flex;
