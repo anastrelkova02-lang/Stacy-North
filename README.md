@@ -58,7 +58,7 @@ Neither font includes Cyrillic letters. While Ukrainian is selected, the site us
 
 ## Language
 
-English is the default. The artist's name is always written as "Stacy North", in both languages. The visitor's choice is saved in their browser. You can also send a link that opens straight in Ukrainian: `https://stacymorth.vercel.app/?lang=uk`
+English is the default. The artist's name is always written as "Stacy North", in both languages. The visitor's choice is saved in their browser. You can also send a link that opens straight in Ukrainian: `https://stasynorth.vercel.app/?lang=uk`
 
 ---
 

@@ -84,27 +84,24 @@
       <!-- ═══════════════ ABOUT ═══════════════ -->
       <section class="section about" id="about" aria-labelledby="about-title">
         <div class="about-photo reveal">
-          <!-- ✎ PHOTO PLACEHOLDER: replace this <div> with
-               <img src="/images/stacy-portrait.webp" alt="Stacy North" width="..." height="..." /> -->
-          <div class="photo-placeholder" aria-hidden="true">
-            <svg viewBox="0 0 400 500" preserveAspectRatio="none" class="sketch-frame">
-              <path d="M6 9 C 120 3, 270 12, 394 6 C 398 160, 392 330, 395 494 C 270 498, 130 489, 5 495 C 9 330, 2 170, 6 9 Z" />
-            </svg>
-            <span data-i18n="about.photo">photo coming soon</span>
-          </div>
+          <img
+            class="about-portrait"
+            src="/images/illustrations/anastasiia-portrait.webp"
+            alt="Anastasiia (stacynorth), children’s book illustrator"
+            data-i18n-attr="alt:about.photoAlt"
+            width="800"
+            height="980"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
 
         <div class="about-text reveal">
           <h2 class="section-title" id="about-title" data-i18n="about.heading">A little about me</h2>
-          <!-- ✎ BIOGRAPHY: edit the texts in src/i18n/translations.js (about.p1 … about.p4) -->
-          <p data-i18n="about.p1">Hi! I'm Stacy North, a children's book illustrator.</p>
-          <p data-i18n="about.p2">
-            I draw whimsical, imaginative worlds — cosy little houses, curious animals and all the tiny details that make a story feel like home.
-          </p>
-          <p data-i18n="about.p3">
-            My favourite part of the work is bringing stories and characters to life, so that readers of every age want to step inside the page and stay a little longer.
-          </p>
-          <p data-i18n="about.p4">If you have a story waiting for its pictures, I would love to hear about it.</p>
+          <!-- ✎ BIOGRAPHY: edit the texts in src/i18n/translations.js (about.p1 … about.p3) -->
+          <p data-i18n-html="about.p1">Hi! I’m Anastasiia (stacynorth), a Ukrainian self-taught children’s book illustrator and aspiring author.</p>
+          <p data-i18n-html="about.p2">I worked as an illustrator and animator for <a class="pencil-link" href="https://suspilne.media" target="_blank" rel="noopener noreferrer">Suspilne Ukraine</a>, the country’s largest public broadcaster, creating illustrations and <a class="pencil-link" href="https://youtube.com/@suspilnekazky?feature=shared" target="_blank" rel="noopener noreferrer">animations for children’s fairy tales</a>. My freelance experience includes book illustration, character design, posters, postcards and editorial artwork.</p>
+          <p data-i18n-html="about.p3">I create charming characters and cozy, imaginative worlds, helping authors bring their children’s stories to life. I’d love to illustrate your next book!</p>
           <svg class="doodle doodle--squiggle" viewBox="0 0 220 40" aria-hidden="true">
             <path d="M4 26 C 24 4, 40 4, 46 20 S 64 38, 78 22 S 100 2, 112 20 S 132 38, 146 22 S 168 4, 180 20 S 200 34, 216 16" />
           </svg>
