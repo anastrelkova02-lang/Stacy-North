@@ -98,7 +98,7 @@
   --gap: clamp(16px, 2.6vw, 40px);
   --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
   --ease-pop: cubic-bezier(0.3, 1.5, 0.5, 1);
-  --line: 2.5px;
+  --line: 2px;
   --nudge-unit: 1rem;
 }
 
@@ -443,7 +443,8 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  row-gap: clamp(40px, 5vw, 80px);
+  /* the gap between pictures equals the gallery's side margin */
+  row-gap: var(--gutter);
 }
 
 .art-row {
@@ -980,7 +981,7 @@ html.lb-lock body {
   }
   /* phones: one picture per line, every picture the full column width */
   .canvas {
-    row-gap: 32px;
+    row-gap: var(--gutter);
   }
   .art-row {
     display: contents;
