@@ -12,10 +12,12 @@
  */
 export const translations = {
   en: {
-    'meta.title': "Stacy North — Children's Book Illustrator",
-    'meta.aboutTitle': 'About — Stacy North',
+    'meta.title': "Stacy North | Ukrainian Children's Book Illustrator",
+    'meta.aboutTitle': "About Stacy North | Ukrainian Children's Book Illustrator",
     'meta.description':
-      "Whimsical, imaginative illustrations by Stacy North, children's book illustrator.",
+      "Stacy North is a Ukrainian children's book illustrator creating charming characters, whimsical worlds and illustrations for children's stories.",
+    'meta.aboutDescription':
+      "Stacy North (Anastasiia) is a Ukrainian children's book illustrator. She created illustrations and animations for children's fairy tales at Suspilne Ukraine and works on books, characters and posters.",
 
     'lang.label': 'Choose language',
     'lang.en': 'English',
@@ -29,7 +31,7 @@ export const translations = {
     'social.email': 'Write to Stacy North by email',
     'social.instagram': 'Stacy North on Instagram (opens in a new tab)',
 
-    'illustrations.heading': 'Illustrations',
+    'illustrations.heading': 'Illustrations by Stacy North',
     'illustrations.open': 'Open larger: ',
 
     'about.heading': 'A little about me',
@@ -57,9 +59,12 @@ export const translations = {
   },
 
   uk: {
-    'meta.title': 'Stacy North — ілюстраторка дитячих книжок',
-    'meta.aboutTitle': 'Про мене — Stacy North',
-    'meta.description': 'Казкові ілюстрації Stacy North — ілюстраторки дитячих книжок.',
+    'meta.title': 'Stacy North | Українська ілюстраторка дитячих книжок',
+    'meta.aboutTitle': 'Про Stacy North | Українська ілюстраторка дитячих книжок',
+    'meta.description':
+      'Stacy North — українська ілюстраторка дитячих книжок, яка створює чарівних персонажів, казкові світи та ілюстрації до дитячих історій.',
+    'meta.aboutDescription':
+      'Stacy North (Анастасія) — українська ілюстраторка дитячих книжок. Створювала ілюстрації та анімації для дитячих казок на Суспільному, працює над книжками, персонажами та постерами.',
 
     'lang.label': 'Вибір мови',
     'lang.en': 'Англійська',
@@ -73,7 +78,7 @@ export const translations = {
     'social.email': 'Написати Stacy North на пошту',
     'social.instagram': 'Stacy North в Instagram (відкриється в новій вкладці)',
 
-    'illustrations.heading': 'Ілюстрації',
+    'illustrations.heading': 'Ілюстрації Stacy North',
     'illustrations.open': 'Переглянути більшою: ',
 
     'about.heading': 'Трохи про мене',
