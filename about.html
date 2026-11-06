@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About — Stacy North</title>
+    <meta
+      name="description"
+      content="Whimsical, imaginative illustrations by Stacy North, children's book illustrator."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light only" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="About — Stacy North" />
+    <meta
+      property="og:description"
+      content="Whimsical, imaginative illustrations by Stacy North, children's book illustrator."
+    />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="preload" href="/fonts/NaomisHand-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/Innocent.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/images/brand/logo.png?v=ua" as="image" />
+
+    <!-- Apply the saved language before the page paints (no flash of the wrong language) -->
+    <script>
+      try {
+        var q = new URLSearchParams(location.search).get('lang');
+        var l = q === 'uk' || q === 'en' ? q : localStorage.getItem('stacy-north-lang');
+        if (l === 'uk' || l === 'en') document.documentElement.lang = l;
+      } catch (e) {}
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+
+  <body data-title="meta.aboutTitle">
+    <a class="skip-link" href="#about">Skip to the content</a>
+
+    <!-- ═══════════════ HEADER ═══════════════ -->
+    <header class="site-header" id="top">
+      <!-- The logo is one static image. The words "eng" and "ua" drawn into it
+           are the language switcher: two invisible buttons sit on top of them. -->
+      <div class="logo-wrap">
+        <h1 class="logo">
+          <img
+            src="/images/brand/logo.png?v=ua"
+            alt="Stacy North — children's book illustrator"
+            width="1600"
+            height="465"
+            fetchpriority="high"
+            draggable="false"
+          />
+        </h1>
+        <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label" aria-label="Choose language">
+          <span class="lang-veil lang-veil--en" aria-hidden="true"></span>
+          <span class="lang-veil lang-veil--uk" aria-hidden="true"></span>
+          <button type="button" class="lang-hit lang-hit--en" data-lang="en" data-i18n-attr="aria-label:lang.en" aria-label="English"></button>
+          <button type="button" class="lang-hit lang-hit--uk" data-lang="uk" data-i18n-attr="aria-label:lang.uk" aria-label="Ukrainian"></button>
+        </div>
+      </div>
+
+      <nav class="main-nav" data-i18n-attr="aria-label:nav.label" aria-label="Main navigation">
+        <ul role="list">
+          <li><a href="/#illustrations" data-i18n="nav.illustrations">illustrations</a></li>
+          <li><a href="/about" aria-current="page" data-i18n="nav.about">about</a></li>
+          <li><a href="/#contacts" data-i18n="nav.contacts">contacts</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="i18n-fade">
+      <!-- ═══════════════ ABOUT ═══════════════ -->
+      <section class="section about" id="about" aria-labelledby="about-title">
+        <div class="about-photo reveal">
+          <img
+            class="about-portrait"
+            src="/images/illustrations/anastasiia-portrait.webp"
+            alt="Anastasiia (stacynorth), children’s book illustrator"
+            data-i18n-attr="alt:about.photoAlt"
+            width="800"
+            height="980"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <div class="about-text reveal">
+          <h2 class="section-title" id="about-title" data-i18n="about.heading">A little about me</h2>
+          <!-- ✎ BIOGRAPHY: edit the texts in src/i18n/translations.js (about.p1 … about.p3) -->
+          <p data-i18n-html="about.p1">Hi! I’m Anastasiia (stacynorth), a Ukrainian self-taught children’s book illustrator and aspiring author.</p>
+          <p data-i18n-html="about.p2">I worked as an illustrator and animator for <a class="pencil-link" href="https://suspilne.media" target="_blank" rel="noopener noreferrer">Suspilne Ukraine</a>, the country’s largest public broadcaster, creating illustrations and <a class="pencil-link" href="https://youtube.com/@suspilnekazky?feature=shared" target="_blank" rel="noopener noreferrer">animations for children’s fairy tales</a>. My freelance experience includes book illustration, character design, posters, postcards and editorial artwork.</p>
+          <p data-i18n-html="about.p3">I create charming characters and cozy, imaginative worlds, helping authors bring their children’s stories to life. I’d love to illustrate your next book!</p>
+          <svg class="doodle doodle--squiggle" viewBox="0 0 220 40" aria-hidden="true">
+            <path d="M4 26 C 24 4, 40 4, 46 20 S 64 38, 78 22 S 100 2, 112 20 S 132 38, 146 22 S 168 4, 180 20 S 200 34, 216 16" />
+          </svg>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <!-- The two mouse illustrations live only here, at the very bottom of the page -->
+      <ul class="social" role="list">
+        <li>
+          <a class="social-icon js-email" href="mailto:stacynorth.illustration@gmail.com" data-i18n-attr="aria-label:social.email" aria-label="Write to Stacy North by email">
+            <img src="/images/brand/icon-email.png" alt="" width="293" height="306" loading="lazy" />
+          </a>
+        </li>
+        <li>
+          <a
+            class="social-icon js-instagram"
+            href="https://www.instagram.com/stacynorth_illustration/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n-attr="aria-label:social.instagram"
+            aria-label="Stacy North on Instagram (opens in a new tab)"
+          >
+            <img src="/images/brand/icon-instagram.png" alt="" width="285" height="269" loading="lazy" />
+          </a>
+        </li>
+      </ul>
+      <div class="footer-meta">
+        <p>
+          © <span class="js-year">2026</span> Stacy North.
+          <span data-i18n="footer.rights">All illustrations are protected by copyright.</span>
+        </p>
+        <a href="#top" class="to-top" data-i18n="footer.top">back to the top</a>
+      </div>
+    </footer>
+
+    <noscript>
+      <style>.reveal{opacity:1!important;transform:none!important}</style>
+    </noscript>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
