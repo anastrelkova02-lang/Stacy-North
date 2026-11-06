@@ -258,6 +258,65 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
   outline-offset: 0;
 }
 
+/* footer: "click here to contact me" + a hand-drawn arrow pointing at the mouse icons */
+.social-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 24px);
+}
+.contact-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: var(--ink);
+  text-decoration: none;
+  margin-top: 1.2em;
+}
+.contact-hint-text {
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+  white-space: nowrap;
+}
+.hint-arrow {
+  width: clamp(84px, 9vw, 116px);
+  margin: -0.1em -0.8em 0 0;
+  overflow: visible;
+}
+.hint-arrow path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hint-draw 4.2s var(--ease) infinite;
+}
+.hint-arrow .hint-arrow-head {
+  animation-name: hint-head;
+}
+/* the line draws itself, the arrowhead follows, it rests, then fades and starts again */
+@keyframes hint-draw {
+  0% { stroke-dashoffset: 1; opacity: 1; }
+  32%, 90% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+@keyframes hint-head {
+  0%, 30% { stroke-dashoffset: 1; opacity: 1; }
+  40%, 90% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+.contact-hint:hover .hint-arrow {
+  transform: translate(2px, -2px);
+  transition: transform 0.35s var(--ease);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hint-arrow path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
 /* mouse illustrations (footer only) */
 .social {
   display: flex;
@@ -536,24 +595,16 @@ html:lang(en) .nh {
   top: 0;
 }
 
-/* links in the About text, marked as if with a red pencil */
+/* links in the About text: plain blue words, no underline */
 .pencil-link {
-  --pencil: #a8463a;
-  color: inherit;
+  --link: #2a5db0;
+  color: var(--link);
   text-decoration: none;
-  padding: 0 0.08em 0.12em;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M1 7.2 C 18 5.6, 34 8.4, 52 6.6 S 88 5.4, 119 6.8' fill='none' stroke='%23a8463a' stroke-width='1.6' stroke-linecap='round' opacity='.9'/%3E%3Cpath d='M3 9.2 C 26 8.1, 47 9.9, 70 8.6 S 101 8.2, 117 9.4' fill='none' stroke='%23a8463a' stroke-width='1' stroke-linecap='round' opacity='.45'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 100% 0.55em;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  transition: color 0.3s var(--ease), background-size 0.35s var(--ease);
+  transition: color 0.3s var(--ease), opacity 0.3s var(--ease);
 }
 .pencil-link:hover,
 .pencil-link:focus-visible {
-  color: var(--pencil);
-  background-size: 100% 0.75em;
+  color: #1c3f7a;
 }
 
 /* ═══════════════ CONTACT ═══════════════ */
@@ -874,6 +925,22 @@ html.lb-lock body {
   .site-footer {
     gap: 18px;
     padding-bottom: 28px;
+  }
+  .social-wrap {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .contact-hint {
+    align-items: center;
+    margin-top: 0;
+  }
+  .hint-arrow {
+    width: 72px;
+    margin: 0.3em 0 -0.4em;
+    transform: rotate(160deg);
+  }
+  .contact-hint:hover .hint-arrow {
+    transform: rotate(160deg);
   }
   .site-header {
     padding-top: 30px;
