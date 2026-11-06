@@ -27,9 +27,11 @@ const pick = (obj) => (obj ? obj[lang] ?? obj.en ?? '' : '');
 
 function applyTranslations() {
   document.documentElement.lang = lang;
-  document.title = t('meta.title');
+  // each page names its own title key (<body data-title>); the gallery uses meta.title
+  const titleKey = document.body.dataset.title || 'meta.title';
+  document.title = t(titleKey);
   setMeta('meta[name="description"]', t('meta.description'));
-  setMeta('meta[property="og:title"]', t('meta.title'));
+  setMeta('meta[property="og:title"]', t(titleKey));
   setMeta('meta[property="og:description"]', t('meta.description'));
 
   document.querySelectorAll('[data-i18n]').forEach((el) => {
@@ -240,6 +242,8 @@ function refreshGalleryText() {
 
 const lightbox = (() => {
   const dialog = document.getElementById('lightbox');
+  // pages without a gallery (About) have no viewer
+  if (!dialog) return { open() {}, close() {}, updateCaption() {}, isOpen: false };
   const figure = dialog.querySelector('.lb-figure');
   const media = document.getElementById('lb-media');
   const prevBtn = dialog.querySelector('.lb-prev');
