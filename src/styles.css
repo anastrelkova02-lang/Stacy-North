@@ -437,6 +437,11 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
    Composed row by row (see `galleryLayout` in src/data/illustrations.js).
    Each picture keeps its own proportions: landscapes are large, portraits
    and squares much narrower, nothing is cropped or stretched.            */
+/* until the script has built the gallery, keep room for it so the contact block and footer
+   don't appear first and then jump down (layout shift) */
+.canvas:empty {
+  min-height: 160vh;
+}
 .canvas {
   /* every illustration is shown at exactly this width (or the full column on smaller screens) */
   max-width: 800px;

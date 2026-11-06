@@ -30,9 +30,10 @@ function applyTranslations() {
   // each page names its own title key (<body data-title>); the gallery uses meta.title
   const titleKey = document.body.dataset.title || 'meta.title';
   document.title = t(titleKey);
-  setMeta('meta[name="description"]', t('meta.description'));
+  const descKey = document.body.dataset.description || 'meta.description';
+  setMeta('meta[name="description"]', t(descKey));
   setMeta('meta[property="og:title"]', t(titleKey));
-  setMeta('meta[property="og:description"]', t('meta.description'));
+  setMeta('meta[property="og:description"]', t(descKey));
 
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     el.textContent = t(el.dataset.i18n);
@@ -201,10 +202,14 @@ function buildGallery(container, items) {
 
       const img = new Image();
       img.src = item.src;
-      const thumbW = Math.min(1100, item.width);
-      const fullW = Math.min(2400, item.width);
-      if (item.full && item.full !== item.src && fullW > thumbW) {
-        img.srcset = `${item.src} ${thumbW}w, ${item.full} ${fullW}w`;
+      // the browser picks the smallest file that is still sharp on this screen:
+      // 800px copy for phones / ordinary screens, the gallery file for sharp (retina) screens,
+      // and the large file only when the gallery file is under 1600px wide
+      const candidates = [[item.small, 800], [item.src, item.srcWidth]];
+      if (item.full && item.full !== item.src && item.srcWidth < 1600) candidates.push([item.full, item.fullWidth]);
+      const usable = candidates.filter(([url, width]) => url && width);
+      if (usable.length > 1) {
+        img.srcset = usable.map(([url, width]) => `${url} ${width}w`).join(', ');
         img.sizes = sizes;
       }
       img.width = item.width;
