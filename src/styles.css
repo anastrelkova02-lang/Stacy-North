@@ -261,7 +261,7 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
 /* footer: "click here to contact me" + a hand-drawn arrow pointing at the mouse icons */
 .social-wrap {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   gap: clamp(10px, 2vw, 24px);
 }
@@ -279,7 +279,7 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
 }
 .hint-arrow {
   width: clamp(84px, 9vw, 116px);
-  margin: -0.1em -0.8em 0 0;
+  margin: 0.1em -0.4em 0 0;
   overflow: visible;
 }
 .hint-arrow path {
@@ -307,7 +307,7 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
   100% { stroke-dashoffset: 0; opacity: 0; }
 }
 .contact-hint:hover .hint-arrow {
-  transform: translate(2px, -2px);
+  transform: translateX(3px);
   transition: transform 0.35s var(--ease);
 }
 @media (prefers-reduced-motion: reduce) {
@@ -928,6 +928,7 @@ html.lb-lock body {
   }
   .social-wrap {
     flex-direction: column;
+    align-items: center;
     gap: 2px;
   }
   .contact-hint {
@@ -936,11 +937,11 @@ html.lb-lock body {
   }
   .hint-arrow {
     width: 72px;
-    margin: 0.3em 0 -0.4em;
-    transform: rotate(160deg);
+    margin: 0.3em 0 0.9em;
+    transform: rotate(90deg);
   }
   .contact-hint:hover .hint-arrow {
-    transform: rotate(160deg);
+    transform: rotate(90deg);
   }
   .site-header {
     padding-top: 30px;
