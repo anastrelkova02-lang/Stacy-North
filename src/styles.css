@@ -936,7 +936,7 @@ html.lb-lock body {
     gap: 2px;
   }
   /* phones: the text, then two arrows — the left one curls down to the envelope,
-     the right one (a mirror image) down to the camera */
+     the right one (a mirror image) down to the camera; scaleY(-1) puts each loop on its outer side */
   .contact-hint {
     display: grid;
     grid-template-columns: auto auto;
@@ -956,11 +956,11 @@ html.lb-lock body {
   }
   .hint-arrow,
   .contact-hint:hover .hint-arrow {
-    transform: scaleX(-1) rotate(62deg);
+    transform: scaleX(-1) rotate(62deg) scaleY(-1);
   }
   .hint-arrow--second,
   .contact-hint:hover .hint-arrow--second {
-    transform: rotate(62deg);
+    transform: rotate(62deg) scaleY(-1);
   }
   /* email and Instagram lines and the "Get in touch" button: the two icons do this job on phones */
   .contact-cta,
