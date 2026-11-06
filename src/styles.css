@@ -964,6 +964,7 @@ html.lb-lock body {
   }
   .contact-hint-text {
     grid-column: 1 / -1;
+    justify-self: center;
   }
   .hint-arrow,
   .hint-arrow--second {
@@ -1038,7 +1039,50 @@ html.lb-lock body {
 
 /* iPad / tablets (touch screens wider than a phone): the viewer arrows look and sit exactly
    as on the iPhone — at the bottom corners instead of halfway down the sides */
+/* iPad / tablets (touch screens wider than a phone) use the phone version's contact block,
+   footer arrows and viewer arrows; text and spacing keep their tablet sizes */
 @media (min-width: 601px) and (max-width: 1366px) and (pointer: coarse) {
+  .social-wrap {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  /* same as phones: the text, then two arrows — the left one curls down to the envelope,
+     the right one (a mirror image) down to the camera; scaleY(-1) puts each loop on its outer side */
+  .contact-hint {
+    display: grid;
+    /* fixed arrow columns (the longer text can't push them apart); the gap follows the icon
+       spacing so each arrow tip stays over the middle of its icon */
+    grid-template-columns: 64px 64px;
+    justify-content: center;
+    justify-items: center;
+    column-gap: calc(clamp(62px, 7vw, 84px) + clamp(28px, 4vw, 48px) - 64px - var(--tip-k, 0px));
+    margin-top: 0;
+  }
+  .contact-hint-text {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+  .hint-arrow,
+  .hint-arrow--second {
+    display: block;
+    width: 64px;
+    margin: 0.2em 0 0.7em;
+  }
+  .hint-arrow,
+  .contact-hint:hover .hint-arrow {
+    transform: scaleX(-1) rotate(95deg) scaleY(-1);
+  }
+  .hint-arrow--second,
+  .contact-hint:hover .hint-arrow--second {
+    transform: rotate(95deg) scaleY(-1);
+  }
+  /* email and Instagram lines and the "Get in touch" button: the two icons do this job on phones */
+  .contact-cta,
+  .contact-email,
+  .contact-insta {
+    display: none;
+  }
   .lb-prev,
   .lb-next {
     top: auto;
