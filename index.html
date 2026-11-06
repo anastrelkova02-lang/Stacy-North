@@ -3,22 +3,91 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Stacy North — Children’s Book Illustrator</title>
-    <meta
-      name="description"
-      content="Whimsical, imaginative illustrations by Stacy North, children's book illustrator."
-    />
+    <title>Stacy North | Ukrainian Children's Book Illustrator</title>
+    <meta name="description" content="Stacy North is a Ukrainian children's book illustrator creating charming characters, whimsical worlds and illustrations for children's stories." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Stacy North" />
+    <link rel="canonical" href="https://www.stacynorth.com/" />
     <meta name="theme-color" content="#ffffff" />
     <meta name="color-scheme" content="light only" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Stacy North — Children’s Book Illustrator" />
-    <meta
-      property="og:description"
-      content="Whimsical, imaginative illustrations by Stacy North, children's book illustrator."
-    />
-    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:site_name" content="STACY NORTH" />
+    <meta property="og:url" content="https://www.stacynorth.com/" />
+    <meta property="og:title" content="Stacy North | Ukrainian Children's Book Illustrator" />
+    <meta property="og:description" content="Stacy North is a Ukrainian children's book illustrator creating charming characters, whimsical worlds and illustrations for children's stories." />
+    <meta property="og:image" content="https://www.stacynorth.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Stacy North — children's book illustrator logo" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="uk_UA" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Stacy North | Ukrainian Children's Book Illustrator" />
+    <meta name="twitter:description" content="Stacy North is a Ukrainian children's book illustrator creating charming characters, whimsical worlds and illustrations for children's stories." />
+    <meta name="twitter:image" content="https://www.stacynorth.com/og-image.jpg" />
+    <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://www.stacynorth.com/#person",
+          "name": "Stacy North",
+          "alternateName": "Anastasiia",
+          "jobTitle": "Children's book illustrator",
+          "description": "Ukrainian children's book illustrator creating charming characters and cozy, imaginative worlds for children's stories.",
+          "url": "https://www.stacynorth.com/",
+          "image": "https://www.stacynorth.com/images/illustrations/anastasiia-portrait.webp",
+          "email": "mailto:stacynorth.illustration@gmail.com",
+          "nationality": {
+            "@type": "Country",
+            "name": "Ukraine"
+          },
+          "knowsAbout": [
+            "Children's book illustration",
+            "Character design",
+            "Animation",
+            "Posters",
+            "Postcards",
+            "Editorial illustration"
+          ],
+          "sameAs": [
+            "https://www.instagram.com/stacynorth_illustration/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.stacynorth.com/#website",
+          "url": "https://www.stacynorth.com/",
+          "name": "STACY NORTH",
+          "alternateName": "Stacy North — children's book illustrator",
+          "inLanguage": [
+            "en",
+            "uk"
+          ],
+          "publisher": {
+            "@id": "https://www.stacynorth.com/#person"
+          }
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": "https://www.stacynorth.com/#webpage",
+          "url": "https://www.stacynorth.com/",
+          "name": "Stacy North | Ukrainian Children's Book Illustrator",
+          "description": "Stacy North is a Ukrainian children's book illustrator creating charming characters, whimsical worlds and illustrations for children's stories.",
+          "inLanguage": "en",
+          "isPartOf": {
+            "@id": "https://www.stacynorth.com/#website"
+          },
+          "about": {
+            "@id": "https://www.stacynorth.com/#person"
+          },
+          "primaryImageOfPage": "https://www.stacynorth.com/images/illustrations/rainy-campfire.webp"
+        }
+      ]
+    }
+    </script>
 
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -26,6 +95,15 @@
     <link rel="preload" href="/fonts/NaomisHand-Regular.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="preload" href="/fonts/Innocent.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="preload" href="/images/brand/logo.png?v=ua" as="image" />
+    <!-- first gallery illustration: start downloading it right away (keep in sync with the first entry in src/data/illustrations.js) -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/illustrations/rainy-campfire.webp"
+      imagesrcset="/images/illustrations/rainy-campfire-800.webp 800w, /images/illustrations/rainy-campfire.webp 1100w, /images/illustrations/rainy-campfire-full.webp 2400w"
+      imagesizes="(min-width: 601px) min(800px, 90vw), 92vw"
+      fetchpriority="high"
+    />
 
     <!-- Apply the saved language before the page paints (no flash of the wrong language) -->
     <script>
@@ -49,7 +127,7 @@
         <h1 class="logo">
           <img
             src="/images/brand/logo.png?v=ua"
-            alt="Stacy North — children's book illustrator"
+            alt="Stacy North — Ukrainian children's book illustrator"
             width="1600"
             height="465"
             fetchpriority="high"
@@ -76,7 +154,7 @@
     <main class="i18n-fade">
       <!-- ═══════════════ ILLUSTRATIONS ═══════════════ -->
       <section class="section section--gallery" id="illustrations" aria-labelledby="illustrations-title">
-        <h2 class="visually-hidden" id="illustrations-title" data-i18n="illustrations.heading">Illustrations</h2>
+        <h2 class="visually-hidden" id="illustrations-title" data-i18n="illustrations.heading">Illustrations by Stacy North</h2>
         <!-- Filled from src/data/illustrations.js -->
         <div class="canvas" id="illustrations-grid"></div>
       </section>
