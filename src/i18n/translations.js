@@ -48,6 +48,7 @@ export const translations = {
 
     'footer.rights': 'All illustrations are protected by copyright.',
     'footer.top': 'back to the top',
+    'footer.hint': 'click here to contact me',
 
     'lightbox.label': 'Artwork viewer',
     'lightbox.close': 'close',
@@ -91,6 +92,7 @@ export const translations = {
 
     'footer.rights': 'Усі ілюстрації захищені авторським правом.',
     'footer.top': 'нагору',
+    'footer.hint': 'натисніть тут, щоб зв’язатися зі мною',
 
     'lightbox.label': 'Перегляд роботи',
     'lightbox.close': 'закрити',
