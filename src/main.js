@@ -200,6 +200,15 @@ function buildGallery(container, items) {
       const frame = document.createElement('span');
       frame.className = 'art-frame';
 
+      if (item.video) {
+        frame.appendChild(makeVideo(item));
+        btn.append(frame);
+        fig.appendChild(btn);
+        rowEl.appendChild(fig);
+        galleryItems.push({ item, el: fig });
+        return;
+      }
+
       const img = new Image();
       img.src = item.src;
       // the browser picks the smallest file that is still sharp on this screen:
@@ -231,11 +240,56 @@ function buildGallery(container, items) {
   });
 }
 
+/* animated artworks: silent looping videos that download and play by themselves while on screen;
+   visitors who prefer reduced motion see the still first frame */
+const videoObserver =
+  'IntersectionObserver' in window
+    ? new IntersectionObserver(
+        (entries) =>
+          entries.forEach(({ target, isIntersecting }) => {
+            if (isIntersecting && !reduceMotion.matches) {
+              if (!target.src) target.src = target.dataset.src;
+              target.play().catch(() => {});
+            } else if (!target.paused) {
+              target.pause();
+            }
+          }),
+        { rootMargin: '300px 0px' }
+      )
+    : null;
+
+function makeVideo(item, { inViewer = false } = {}) {
+  const video = document.createElement('video');
+  video.muted = true;
+  video.defaultMuted = true;
+  video.loop = true;
+  video.playsInline = true;
+  video.setAttribute('playsinline', '');
+  video.setAttribute('muted', '');
+  video.preload = 'none';
+  video.poster = item.src;
+  video.width = item.width;
+  video.height = item.height;
+  video.setAttribute('role', 'img');
+  video.setAttribute('aria-label', pick(item.description) || pick(item.title));
+  video.dataset.src = item.video;
+  video.classList.add('is-loaded');
+  if ((inViewer || !videoObserver) && !reduceMotion.matches) {
+    video.src = item.video;
+    video.autoplay = true;
+  } else if (!inViewer) {
+    videoObserver.observe(video);
+  }
+  return video;
+}
+
 function refreshGalleryText() {
   galleryItems.forEach(({ item, el }) => {
     const title = pick(item.title);
     const media = el.querySelector('img');
     if (media) media.alt = pick(item.description) || title;
+    const video = el.querySelector('video');
+    if (video) video.setAttribute('aria-label', pick(item.description) || title);
     el.querySelector('.art-button').setAttribute(
       'aria-label',
       t('illustrations.open') + title
@@ -260,12 +314,18 @@ const lightbox = (() => {
   function render() {
     const item = list[index];
     media.innerHTML = '';
-    const img = new Image();
-    img.src = item.full || item.src;
-    img.width = item.width;
-    img.height = item.height;
-    img.alt = pick(item.description) || pick(item.title);
-    media.appendChild(img);
+    if (item.video) {
+      const video = makeVideo(item, { inViewer: true });
+      video.style.setProperty('--ratio', item.width / item.height);
+      media.appendChild(video);
+    } else {
+      const img = new Image();
+      img.src = item.full || item.src;
+      img.width = item.width;
+      img.height = item.height;
+      img.alt = pick(item.description) || pick(item.title);
+      media.appendChild(img);
+    }
     // warm the neighbours so arrows feel instant
     [list[index + 1], list[index - 1]].forEach((n) => {
       if (n) new Image().src = n.full || n.src;
@@ -281,6 +341,8 @@ const lightbox = (() => {
     const img = media.querySelector('img');
     const item = list[index];
     if (img && item) img.alt = pick(item.description) || pick(item.title);
+    const video = media.querySelector('video');
+    if (video && item) video.setAttribute('aria-label', pick(item.description) || pick(item.title));
   }
 
   function go(step) {

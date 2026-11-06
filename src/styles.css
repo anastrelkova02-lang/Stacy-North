@@ -509,7 +509,8 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
   display: block;
   width: 100%;
 }
-.art-frame img {
+.art-frame img,
+.art-frame video {
   display: block;
   width: 100%;
   height: auto;
@@ -518,11 +519,14 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
   opacity: 0;
   transition: transform 0.9s var(--ease), opacity 0.6s var(--ease);
 }
-.art-frame img.is-loaded {
+.art-frame img.is-loaded,
+.art-frame video.is-loaded {
   opacity: 1;
 }
 .art-button:hover .art-frame img,
-.art-button:focus-visible .art-frame img {
+.art-button:hover .art-frame video,
+.art-button:focus-visible .art-frame img,
+.art-button:focus-visible .art-frame video {
   transform: translateY(-4px) scale(1.012);
 }
 
@@ -778,6 +782,14 @@ html:lang(en) .nh {
   display: flex;
   justify-content: center;
 }
+/* animated artworks fill the viewer like the pictures do, keeping their proportions */
+.lb-media video {
+  display: block;
+  width: min(92vw, 1600px, calc((100dvh - 140px) * var(--ratio)));
+  height: auto;
+  aspect-ratio: var(--ratio);
+  object-fit: contain;
+}
 .lb-media img {
   max-width: min(100%, 1600px);
   max-height: calc(100vh - 140px);
@@ -1018,6 +1030,35 @@ html.lb-lock body {
   }
   .lb-media img {
     max-height: calc(100dvh - 180px);
+  }
+  .lb-media video {
+    width: min(92vw, calc((100dvh - 180px) * var(--ratio)));
+  }
+}
+
+/* iPad / tablets (touch screens wider than a phone): the viewer arrows look and sit exactly
+   as on the iPhone — at the bottom corners instead of halfway down the sides */
+@media (min-width: 601px) and (max-width: 1366px) and (pointer: coarse) {
+  .lb-prev,
+  .lb-next {
+    top: auto;
+    bottom: 12px;
+    margin-top: 0;
+  }
+  .lb-prev {
+    left: 8px;
+  }
+  .lb-next {
+    right: 8px;
+  }
+  .lightbox-inner {
+    padding-bottom: 76px;
+  }
+  .lb-media img {
+    max-height: calc(100dvh - 180px);
+  }
+  .lb-media video {
+    width: min(92vw, 1600px, calc((100dvh - 180px) * var(--ratio)));
   }
 }
 
