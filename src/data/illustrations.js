@@ -41,20 +41,20 @@ export const illustrations = [
   },
   {
     id: "stork-school",
-    src: "images/illustrations/stork-school.webp",
-    full: "images/illustrations/stork-school.webp",
-    small: "images/illustrations/stork-school-800.webp",
-    srcWidth: 1600,
-    fullWidth: 1600,
-    width: 1600,
-    height: 900,
+    // animated GIF (same image in the gallery and the viewer)
+    src: "images/illustrations/stork-school-anim.gif",
+    full: "images/illustrations/stork-school-anim.gif",
+    srcWidth: 853,
+    fullWidth: 853,
+    width: 853,
+    height: 480,
     title: {
       en: "Off to School",
       uk: "До школи"
     },
     description: {
-      en: "A stork with a backpack full of books flies past a big autumn tree, where little animals hold colourful balloons.",
-      uk: "Лелека з рюкзаком, повним книжок, пролітає повз велике осіннє дерево, під яким маленькі звірята тримають різнобарвні кульки."
+      en: "Animated illustration: a stork with a backpack full of books flaps its wings past a big autumn tree, where three little storks and animal friends with colourful balloons wave goodbye.",
+      uk: "Анімована ілюстрація: лелека з рюкзаком, повним книжок, махає крилами біля великого осіннього дерева, під яким троє маленьких лелек і звірята з різнобарвними кульками махають на прощання."
     }
   },
   {
