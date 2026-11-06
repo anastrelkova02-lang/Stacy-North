@@ -389,8 +389,9 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
 .main-nav a::after {
   content: '';
   position: absolute;
-  left: 0;
-  right: 0;
+  /* 72% of the word's width, centred */
+  left: 14%;
+  right: 14%;
   bottom: 0;
   height: var(--line);
   border-radius: 3px;
