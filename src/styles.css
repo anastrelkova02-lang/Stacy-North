@@ -956,11 +956,11 @@ html.lb-lock body {
   }
   .hint-arrow,
   .contact-hint:hover .hint-arrow {
-    transform: scaleX(-1) rotate(62deg) scaleY(-1);
+    transform: scaleX(-1) rotate(95deg) scaleY(-1);
   }
   .hint-arrow--second,
   .contact-hint:hover .hint-arrow--second {
-    transform: rotate(62deg) scaleY(-1);
+    transform: rotate(95deg) scaleY(-1);
   }
   /* email and Instagram lines and the "Get in touch" button: the two icons do this job on phones */
   .contact-cta,
