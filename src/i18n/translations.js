@@ -13,6 +13,7 @@
 export const translations = {
   en: {
     'meta.title': "Stacy North — Children's Book Illustrator",
+    'meta.aboutTitle': 'About — Stacy North',
     'meta.description':
       "Whimsical, imaginative illustrations by Stacy North, children's book illustrator.",
 
@@ -56,6 +57,7 @@ export const translations = {
 
   uk: {
     'meta.title': 'Stacy North — ілюстраторка дитячих книжок',
+    'meta.aboutTitle': 'Про мене — Stacy North',
     'meta.description': 'Казкові ілюстрації Stacy North — ілюстраторки дитячих книжок.',
 
     'lang.label': 'Вибір мови',
