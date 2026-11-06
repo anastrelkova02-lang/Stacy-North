@@ -15,6 +15,8 @@
  *    src      image shown in the gallery            (srcWidth = its real pixel width)
  *    small    800px-wide copy for phones and ordinary screens (`name-800.webp`)
  *    full     large image for the lightbox (optional, falls back to `src`; fullWidth = its width)
+ *    video    (optional) silent looping .mp4 that plays by itself instead of the picture;
+ *             `src` / `full` are then its first frame (shown until it plays, and for reduced motion)
  *    width / height   original pixel size (used to keep the exact proportions — no cropping)
  *    title / description   { en, uk }  — not shown on the page; used as the image alt text
  *                          (for visitors using screen readers) and for search engines
@@ -41,13 +43,14 @@ export const illustrations = [
   },
   {
     id: "stork-school",
-    // animated GIF (same image in the gallery and the viewer)
-    src: "images/illustrations/stork-school-anim.gif",
-    full: "images/illustrations/stork-school-anim.gif",
-    srcWidth: 853,
-    fullWidth: 853,
-    width: 853,
-    height: 480,
+    // animated: a silent looping video that plays by itself; `src` is its first frame (still image)
+    video: "images/illustrations/stork-school-video.mp4",
+    src: "images/illustrations/stork-school-poster.webp",
+    full: "images/illustrations/stork-school-poster.webp",
+    srcWidth: 1280,
+    fullWidth: 1280,
+    width: 1280,
+    height: 720,
     title: {
       en: "Off to School",
       uk: "До школи"
@@ -113,38 +116,40 @@ export const illustrations = [
   },
   {
     id: "frog-pond",
-    src: "images/illustrations/frog-pond.webp",
-    full: "images/illustrations/frog-pond-full.webp",
-    small: "images/illustrations/frog-pond-800.webp",
-    srcWidth: 1100,
-    fullWidth: 1920,
-    width: 1920,
-    height: 1080,
+    // animated: a silent looping video that plays by itself; `src` is its first frame (still image)
+    video: "images/illustrations/frog-pond-video.mp4",
+    src: "images/illustrations/frog-pond-poster.webp",
+    full: "images/illustrations/frog-pond-poster.webp",
+    srcWidth: 1280,
+    fullWidth: 1280,
+    width: 1280,
+    height: 720,
     title: {
       en: "Pond Song",
       uk: "Пісенька біля ставка"
     },
     description: {
-      en: "Two frogs relax on a lily pond, one on a lily pad and one singing on a floating log, surrounded by dragonflies and reeds.",
-      uk: "Дві жабки відпочивають на ставку: одна сидить на листку латаття, інша співає на колоді серед бабок і очерету."
+      en: "Animated illustration: two frogs relax on a lily pond, one on a lily pad and one singing on a floating log, surrounded by dragonflies and reeds.",
+      uk: "Анімована ілюстрація: дві жабки відпочивають на ставку: одна сидить на листку латаття, інша співає на колоді серед бабок і очерету."
     }
   },
   {
     id: "whales",
-    src: "images/illustrations/whales.webp",
-    full: "images/illustrations/whales.webp",
-    small: "images/illustrations/whales-800.webp",
-    srcWidth: 1600,
-    fullWidth: 1600,
-    width: 1600,
-    height: 900,
+    // animated: a silent looping video that plays by itself; `src` is its first frame (still image)
+    video: "images/illustrations/whales-video.mp4",
+    src: "images/illustrations/whales-poster.webp",
+    full: "images/illustrations/whales-poster.webp",
+    srcWidth: 1280,
+    fullWidth: 1280,
+    width: 1280,
+    height: 720,
     title: {
       en: "Whale Song",
       uk: "Пісня китів"
     },
     description: {
-      en: "A mother whale and her calf swim through the blue sea past colourful coral and little fish.",
-      uk: "Мама-кит і китеня пливуть синім морем повз барвисті корали й маленьких рибок."
+      en: "Animated illustration: a mother whale and her calf swim through the blue sea past colourful coral and little fish.",
+      uk: "Анімована ілюстрація: мама-кит і китеня пливуть синім морем повз барвисті корали й маленьких рибок."
     }
   },
   {
@@ -185,20 +190,21 @@ export const illustrations = [
   },
   {
     id: "submarine",
-    src: "images/illustrations/submarine.webp",
-    full: "images/illustrations/submarine.webp",
-    small: "images/illustrations/submarine-800.webp",
-    srcWidth: 1600,
-    fullWidth: 1600,
-    width: 1600,
-    height: 900,
+    // animated: a silent looping video that plays by itself; `src` is its first frame (still image)
+    video: "images/illustrations/submarine-video.mp4",
+    src: "images/illustrations/submarine-poster.webp",
+    full: "images/illustrations/submarine-poster.webp",
+    srcWidth: 1280,
+    fullWidth: 1280,
+    width: 1280,
+    height: 720,
     title: {
       en: "Little Submarine",
       uk: "Маленький підводний човен"
     },
     description: {
-      en: "Two children look out of the portholes of a little yellow submarine exploring a colourful coral reef.",
-      uk: "Двоє дітей визирають з ілюмінаторів маленького жовтого підводного човна, що досліджує барвистий кораловий риф."
+      en: "Animated illustration: two children look out of the portholes of a little yellow submarine exploring a colourful coral reef.",
+      uk: "Анімована ілюстрація: двоє дітей визирають з ілюмінаторів маленького жовтого підводного човна, що досліджує барвистий кораловий риф."
     }
   },
   {
@@ -257,20 +263,21 @@ export const illustrations = [
   },
   {
     id: "coral-reef",
-    src: "images/illustrations/coral-reef.webp",
-    full: "images/illustrations/coral-reef-full.webp",
-    small: "images/illustrations/coral-reef-800.webp",
-    srcWidth: 1100,
-    fullWidth: 1920,
-    width: 1920,
-    height: 1080,
+    // animated: a silent looping video that plays by itself; `src` is its first frame (still image)
+    video: "images/illustrations/coral-reef-video.mp4",
+    src: "images/illustrations/coral-reef-poster.webp",
+    full: "images/illustrations/coral-reef-poster.webp",
+    srcWidth: 1280,
+    fullWidth: 1280,
+    width: 1280,
+    height: 720,
     title: {
       en: "Under the Sea",
       uk: "Під водою"
     },
     description: {
-      en: "Two little divers meet a curious crab and a friendly octopus on a bright coral reef.",
-      uk: "Двоє маленьких пірнальників знайомляться з допитливим крабом і привітним восьминогом на яскравому кораловому рифі."
+      en: "Animated illustration: two little divers meet a curious crab and a friendly octopus on a bright coral reef.",
+      uk: "Анімована ілюстрація: двоє маленьких пірнальників знайомляться з допитливим крабом і привітним восьминогом на яскравому кораловому рифі."
     }
   },
   {
