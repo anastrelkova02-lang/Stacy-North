@@ -15,7 +15,7 @@ export const translations = {
     'meta.title': "Stacy North | Ukrainian Children's Book Illustrator",
     'meta.aboutTitle': "About Stacy North | Ukrainian Children's Book Illustrator",
     'meta.description':
-      "Stacy North is a Ukrainian children's book illustrator creating charming characters, whimsical worlds and illustrations for children's stories.",
+      "Discover Stacy North, a Ukrainian children's book illustrator creating charming characters, imaginative worlds and illustrations for children's stories. Explore her portfolio and get in touch about your next project.",
     'meta.aboutDescription':
       "Stacy North (Anastasiia) is a Ukrainian children's book illustrator. She created illustrations and animations for children's fairy tales at Suspilne Ukraine and works on books, characters and posters.",
 
@@ -62,7 +62,7 @@ export const translations = {
     'meta.title': 'Stacy North | Українська ілюстраторка дитячих книжок',
     'meta.aboutTitle': 'Про Stacy North | Українська ілюстраторка дитячих книжок',
     'meta.description':
-      'Stacy North — українська ілюстраторка дитячих книжок, яка створює чарівних персонажів, казкові світи та ілюстрації до дитячих історій.',
+      'Stacy North — українська ілюстраторка дитячих книжок, яка створює чарівних персонажів, казкові світи та ілюстрації до дитячих історій. Перегляньте її портфоліо та напишіть їй про свій наступний проєкт.',
     'meta.aboutDescription':
       'Stacy North (Анастасія) — українська ілюстраторка дитячих книжок. Створювала ілюстрації та анімації для дитячих казок на Суспільному, працює над книжками, персонажами та постерами.',
 
