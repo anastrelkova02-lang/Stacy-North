@@ -270,7 +270,6 @@ function makeVideo(item, { inViewer = false } = {}) {
   video.poster = item.src;
   video.width = item.width;
   video.height = item.height;
-  video.setAttribute('role', 'img');
   video.setAttribute('aria-label', pick(item.description) || pick(item.title));
   video.dataset.src = item.video;
   video.classList.add('is-loaded');

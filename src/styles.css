@@ -439,7 +439,7 @@ html:lang(uk) .lang-switch:has(.lang-hit--en:hover) .lang-veil--en {
    and squares much narrower, nothing is cropped or stretched.            */
 /* until the script has built the gallery, keep room for it so the contact block and footer
    don't appear first and then jump down (layout shift) */
-.canvas:empty {
+.js .canvas:empty {
   min-height: 160vh;
 }
 .canvas {
