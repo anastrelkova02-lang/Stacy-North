@@ -3,9 +3,9 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.stacynorth.com/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image>
-      <image:loc>https://www.stacynorth.com/images/illustrations/rainy-campfire.webp</image:loc>
+      <image:loc>https://www.stacynorth.com/images/illustrations/rainy-campfire-full.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.stacynorth.com/images/illustrations/stork-school-poster.webp</image:loc>
@@ -14,10 +14,10 @@
       <image:loc>https://www.stacynorth.com/images/illustrations/baxter-autumn.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.stacynorth.com/images/illustrations/stump-house.webp</image:loc>
+      <image:loc>https://www.stacynorth.com/images/illustrations/stump-house-full.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.stacynorth.com/images/illustrations/tomato-soup-tower.webp</image:loc>
+      <image:loc>https://www.stacynorth.com/images/illustrations/tomato-soup-tower-full.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.stacynorth.com/images/illustrations/frog-pond-poster.webp</image:loc>
@@ -29,7 +29,7 @@
       <image:loc>https://www.stacynorth.com/images/illustrations/savanna-hide-and-seek.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.stacynorth.com/images/illustrations/cookie-tin-workshop.webp</image:loc>
+      <image:loc>https://www.stacynorth.com/images/illustrations/cookie-tin-workshop-full.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.stacynorth.com/images/illustrations/submarine-poster.webp</image:loc>
@@ -41,7 +41,7 @@
       <image:loc>https://www.stacynorth.com/images/illustrations/muddy-piglet.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.stacynorth.com/images/illustrations/ghost-movie-night.webp</image:loc>
+      <image:loc>https://www.stacynorth.com/images/illustrations/ghost-movie-night-full.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.stacynorth.com/images/illustrations/coral-reef-poster.webp</image:loc>
@@ -50,21 +50,21 @@
       <image:loc>https://www.stacynorth.com/images/illustrations/safari-waterhole.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.stacynorth.com/images/illustrations/apple-house.webp</image:loc>
+      <image:loc>https://www.stacynorth.com/images/illustrations/apple-house-full.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.stacynorth.com/images/illustrations/baxter-house.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.stacynorth.com/images/illustrations/gingerbread-house.webp</image:loc>
+      <image:loc>https://www.stacynorth.com/images/illustrations/gingerbread-house-full.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.stacynorth.com/images/illustrations/pumpkin-evening.webp</image:loc>
+      <image:loc>https://www.stacynorth.com/images/illustrations/pumpkin-evening-full.webp</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://www.stacynorth.com/about</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image>
       <image:loc>https://www.stacynorth.com/images/illustrations/anastasiia-portrait.webp</image:loc>
     </image:image>
